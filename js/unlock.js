@@ -56,7 +56,7 @@ const CASE_DB = {
   },
   "FC18032019": {
     access: true,
-    title: "林秉澤與工廠異動 · 深度追查紀錄",
+    title: '<span class="redact-bar">████████████████</span>',
     items: [
       { name: "candy.pdf", locked: true, note: "分類層級：特殊（本帳號無法調閱）" },
       { name: "契約書_附件三.docx", locked: true, note: "分類層級：特殊（本帳號無法調閱）" },
