@@ -598,6 +598,43 @@ body {
   color: var(--system-green);
 }
 
+.result-pending .result-status {
+  color: var(--ink-soft);
+}
+
+/* ===== 最近查詢 ===== */
+.recent-heading {
+  font-size: 13px;
+  color: var(--ink-soft);
+  letter-spacing: 1px;
+  margin: 24px 0 10px;
+  border-top: 1px dashed var(--line);
+  padding-top: 20px;
+}
+
+.recent-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.recent-item {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  background: var(--paper-dark);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 8px 12px;
+  border-radius: 2px;
+}
+
+.recent-item:active {
+  background: var(--line);
+}
+
 /* ===== 驗屍報告：掃描文件呈現 ===== */
 .photo-frame {
   background: #DAD6C9;

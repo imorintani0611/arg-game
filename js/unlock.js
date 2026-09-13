@@ -53,10 +53,33 @@ const CASE_DB = {
   }
 };
 
+// ===== 尚未歸檔的案件代號 =====
+// 這些是首頁「待處理案件」清單裡列出的其他案件，還沒有實際內容
+// 查詢時顯示「尚未歸檔完成」，跟「查無此案件代號」做出區分
+const PENDING_CODES = [
+  "TA23052024",
+  "TA11062024",
+  "CR30042024",
+  "SA02032024",
+  "MP19012024",
+  "DR02092024"
+];
+
 function renderResult(container, code) {
   const record = CASE_DB[code];
 
   if (!record) {
+    if (PENDING_CODES.includes(code)) {
+      container.innerHTML = `
+        <div class="result-panel result-pending">
+          <p class="result-code">${code}</p>
+          <p class="result-status">尚未歸檔完成</p>
+          <p class="result-sub">將在全數歸檔後開放查詢。</p>
+        </div>`;
+      addRecentQuery(code);
+      renderRecentQueries();
+      return;
+    }
     container.innerHTML = `
       <div class="result-panel result-notfound">
         <p class="result-status">查無此案件代號</p>
@@ -73,6 +96,8 @@ function renderResult(container, code) {
         <p class="result-status">權限不足</p>
         <p class="result-sub">你目前的權限無法檢視此筆紀錄的完整內容。</p>
       </div>`;
+    addRecentQuery(code);
+    renderRecentQueries();
     return;
   }
 
@@ -104,6 +129,43 @@ function renderResult(container, code) {
         ${itemsHtml}
       </ul>
     </div>`;
+  addRecentQuery(code);
+  renderRecentQueries();
+}
+
+// ===== 最近查詢紀錄 =====
+// 按照「第一次查詢」的順序排列，之後重複查詢同一個代號不會改變順序
+function addRecentQuery(code) {
+  let list = JSON.parse(localStorage.getItem("recent_queries") || "[]");
+  if (!list.includes(code)) {
+    list.push(code);
+    localStorage.setItem("recent_queries", JSON.stringify(list));
+  }
+}
+
+function renderRecentQueries() {
+  const container = document.getElementById("recentQueries");
+  if (!container) return;
+
+  const list = JSON.parse(localStorage.getItem("recent_queries") || "[]");
+  if (list.length === 0) {
+    container.innerHTML = "";
+    return;
+  }
+
+  container.innerHTML = `
+    <p class="recent-heading">最近查詢</p>
+    <ul class="recent-list">
+      ${list.map(code => `<li><button type="button" class="recent-item" data-code="${code}">${code}</button></li>`).join("")}
+    </ul>`;
+
+  container.querySelectorAll(".recent-item").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const input = document.getElementById("caseSearch");
+      input.value = btn.dataset.code;
+      renderResult(document.getElementById("searchResult"), btn.dataset.code);
+    });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -112,6 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const input = document.getElementById("caseSearch");
   const result = document.getElementById("searchResult");
+
+  renderRecentQueries();
 
   searchBtn.addEventListener("click", () => {
     const code = normalize(input.value);
