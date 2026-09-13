@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>刑案管理系統 CMS-7 | 郵件</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-mail-id="mail2">
+
+<div class="scanline"></div>
+
+<header class="sys-header">
+  <a href="index.html" class="sys-header-left">
+    <span class="sys-badge">CMS-7</span>
+    <span class="sys-title">內部信箱</span>
+  </a>
+  <nav class="sys-nav">
+    <a href="evidence.html" class="nav-icon" aria-label="證據系統">📁</a>
+    <a href="inbox.html" class="nav-icon mail-entry active" aria-label="信箱">
+      <span class="mail-icon">✉</span>
+      <span class="mail-badge">6</span>
+    </a>
+  </nav>
+</header>
+
+<main class="doc-page">
+
+  <div class="mail-detail-meta">
+    <span class="mail-detail-from">林秉澤</span>
+    <span class="mail-detail-time">昨天 21:47</span>
+  </div>
+
+  <h1 class="doc-title mail-detail-subject">關於我女兒的案子</h1>
+
+  <div class="letter">
+    <p>敬啟者：</p>
+    <p>
+      我是林秉澤，五年前過世的女兒林曉雨的父親。案發當時警方將此案結為「交通意外」，
+      但我始終認為其中另有隱情。這五年來我多次陳情，卻始終未獲得任何回應。
+    </p>
+    <p>
+      隨信附上當年的驗屍報告影本與現場紀錄，盼望有新的人願意重新看一次這個案子。
+      我已經沒有力氣再等下去了。
+    </p>
+    <p class="letter-sign">林秉澤 敬上</p>
+  </div>
+
+  <section class="attachment-block">
+    <h2>附件</h2>
+    <ul class="attachment-list">
+      <li class="attachment ok">
+        <a href="summary.html" class="attachment-link">
+          <span class="att-icon">📄</span>
+          <span class="att-name">案件摘要_A11092.pdf</span>
+          <span class="att-tag">可讀取</span>
+        </a>
+      </li>
+      <li class="attachment corrupted">
+        <span class="att-icon">🖼</span>
+        <span class="att-name">現場照片.zip</span>
+        <span class="att-tag">檔案損毀</span>
+      </li>
+      <li class="attachment redacted">
+        <span class="att-icon">📄</span>
+        <span class="att-name">驗屍報告_摘要版.pdf</span>
+        <span class="att-tag">內容遭刪節</span>
+      </li>
+    </ul>
+    <p class="attachment-note">
+      系統提示：本案附件完整度 <strong>34%</strong>。
+    </p>
+  </section>
+
+  <section class="reply-block" id="replyBlock" style="display:none">
+    <h2 class="reply-heading">回覆</h2>
+    <div class="reply-template">
+      <span>我查到案號</span>
+      <input type="text" id="replyCode" class="reply-input" autocomplete="off">
+      <span>，我覺得你需要給我一個解釋。</span>
+    </div>
+    <button id="replySendBtn" class="btn-primary" style="width:100%">送出回覆</button>
+    <div id="replyResult"></div>
+  </section>
+
+</main>
+
+<footer class="sys-footer">
+  <span>本系統僅供內部使用 · 存取紀錄將被留存</span>
+</footer>
+
+<script src="js/site.js"></script>
+<script src="js/reply.js"></script>
+</body>
+</html>

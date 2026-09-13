@@ -1,0 +1,925 @@
+/* ===== 基礎設定 ===== */
+:root {
+  --paper: #E9E6DD;
+  --paper-dark: #DDD8CB;
+  --ink: #232821;
+  --ink-soft: #4A4F45;
+  --line: #B8B2A0;
+  --stamp-red: #8B2635;
+  --system-green: #2F4A3A;
+  --redact: #1C1C1C;
+  --focus-ring: #2F6E4E;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Serif TC", "PMingLiU", serif;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+/* 掃描線效果，增加「舊系統」質感 */
+.scanline {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.015) 0px,
+    rgba(0,0,0,0.015) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 999;
+}
+
+/* ===== 系統頂欄 ===== */
+.sys-header {
+  background: var(--system-green);
+  color: #EDEAE0;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid var(--stamp-red);
+}
+
+.sys-badge {
+  background: #EDEAE0;
+  color: var(--system-green);
+  padding: 2px 8px;
+  margin-right: 10px;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.sys-header-left {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.sys-user {
+  opacity: 0.85;
+}
+
+/* ===== 頂部導覽（信箱／證據系統）===== */
+.sys-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  color: #EDEAE0;
+  text-decoration: none;
+  font-size: 17px;
+  border-radius: 3px;
+  opacity: 0.75;
+}
+
+.nav-icon.active {
+  opacity: 1;
+  background: rgba(241,238,229,0.12);
+}
+
+.nav-icon:active {
+  background: rgba(241,238,229,0.18);
+}
+
+/* ===== 信箱入口（右上角圖示）===== */
+.mail-entry {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: #EDEAE0;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.mail-badge {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  background: var(--stamp-red);
+  color: #F1EEE5;
+  font-size: 10px;
+  font-family: "Courier New", monospace;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+/* ===== 儀表板 ===== */
+.dash-welcome {
+  margin-bottom: 24px;
+}
+
+.dash-greeting {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-family: "Courier New", monospace;
+  margin: 0 0 6px;
+}
+
+.dash-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px;
+}
+
+.dash-item {
+  padding: 14px 12px;
+  border: 1px solid var(--line);
+  background: var(--paper-dark);
+  margin-bottom: 10px;
+}
+
+.dash-item-title {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.dash-item-desc {
+  display: block;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* ===== 待處理案件清單 ===== */
+.pending-cases {
+  margin-bottom: 8px;
+}
+
+.case-group {
+  margin-bottom: 18px;
+}
+
+.case-group-title {
+  font-size: 14px;
+  color: var(--ink-soft);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 8px;
+}
+
+.case-code-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.case-code-list li {
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 10px 12px;
+  background: var(--paper-dark);
+  border: 1px solid var(--line);
+  margin-bottom: 6px;
+}
+
+/* ===== 信箱列表 ===== */
+.mail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+}
+
+.mail-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.mail-link {
+  display: block;
+  padding: 16px 4px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.mail-link:active {
+  background: var(--paper-dark);
+}
+
+.mail-item.unread .mail-subject {
+  font-weight: bold;
+}
+
+.mail-item.unread .mail-from::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--stamp-red);
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.mail-line1 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+  font-family: "Courier New", monospace;
+}
+
+.mail-subject {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.mail-preview {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* ===== 信件詳情頁 ===== */
+.mail-detail-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-family: "Courier New", monospace;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.mail-detail-subject {
+  margin-bottom: 24px;
+}
+
+.code-hl {
+  font-family: "Courier New", monospace;
+  background: var(--paper-dark);
+  padding: 1px 6px;
+  border: 1px solid var(--line);
+}
+
+/* ===== 文件頁面 ===== */
+.doc-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.doc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.stamp-red {
+  color: var(--stamp-red);
+  border: 1px solid var(--stamp-red);
+  padding: 1px 8px;
+  font-weight: bold;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+.doc-title {
+  font-size: 26px;
+  margin: 0 0 4px;
+  letter-spacing: 2px;
+}
+
+.doc-sub {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 28px;
+}
+
+/* ===== 信件本文 ===== */
+.letter {
+  background: var(--paper-dark);
+  padding: 24px 22px;
+  border-left: 3px solid var(--ink-soft);
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.letter p {
+  margin: 0 0 16px;
+}
+
+.letter-sign {
+  text-align: right;
+  color: var(--ink-soft);
+  margin-bottom: 0 !important;
+}
+
+.inline-link {
+  color: var(--system-green);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* ===== 附件區 ===== */
+.attachment-block h2 {
+  font-size: 16px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+
+.attachment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+
+.attachment {
+  border: 1px solid var(--line);
+  margin-bottom: 8px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  background: #F1EEE5;
+}
+
+.attachment,
+.attachment-link {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 10px;
+}
+
+.att-note {
+  flex-basis: 100%;
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-family: "Noto Serif TC", serif;
+  padding-left: 26px;
+}
+
+.attachment-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.attachment-link:active {
+  background: var(--paper-dark);
+}
+
+/* 有連結的附件，外層不重複加padding，避免跟內層連結疊加 */
+.attachment:has(.attachment-link) {
+  padding: 0;
+}
+
+.att-icon { font-size: 16px; }
+
+.att-name { flex: 1; }
+
+.att-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+.attachment.ok .att-tag {
+  background: #DDE7DD;
+  color: var(--system-green);
+}
+
+.attachment.corrupted .att-tag,
+.attachment.redacted .att-tag {
+  background: #EBD9D9;
+  color: var(--stamp-red);
+}
+
+.attachment.corrupted .att-name,
+.attachment.redacted .att-name {
+  color: var(--ink-soft);
+}
+
+.attachment-note {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ===== 行動按鈕 ===== */
+.action-block {
+  margin-top: 40px;
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px dashed var(--line);
+}
+
+.prompt-text {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--system-green);
+  color: #F1EEE5;
+  padding: 14px 32px;
+  text-decoration: none;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  min-height: 44px;
+  line-height: 16px;
+}
+
+.btn-primary:active {
+  background: #24382C;
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ===== 頁尾 ===== */
+.sys-footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--ink-soft);
+  padding: 18px;
+  font-family: "Courier New", monospace;
+}
+
+/* ===== 解謎輸入區 ===== */
+.puzzle-block {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px dashed var(--line);
+}
+
+.puzzle-block h2 {
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.hint-box {
+  background: var(--paper-dark);
+  border-left: 3px solid var(--system-green);
+  padding: 12px 14px;
+  font-size: 13px;
+  font-family: "Courier New", monospace;
+  margin-bottom: 20px;
+}
+
+.hint-label {
+  display: inline-block;
+  background: var(--system-green);
+  color: #F1EEE5;
+  font-size: 11px;
+  padding: 1px 8px;
+  margin-right: 8px;
+  border-radius: 2px;
+}
+
+.field-label {
+  display: block;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.passcode-input {
+  width: 100%;
+  padding: 14px;
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  letter-spacing: 2px;
+  border: 1px solid var(--line);
+  background: #F1EEE5;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.passcode-input:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+
+.unlock-msg {
+  font-size: 13px;
+  margin-top: 12px;
+  min-height: 18px;
+}
+
+.unlock-msg.error { color: var(--stamp-red); }
+.unlock-msg.success { color: var(--system-green); }
+
+/* ===== 案件查詢結果 ===== */
+.search-block {
+  margin-bottom: 24px;
+}
+
+.result-panel {
+  padding: 18px 16px;
+  border: 1px solid var(--line);
+  background: var(--paper-dark);
+  margin-bottom: 24px;
+}
+
+.result-code {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 6px;
+}
+
+.result-title {
+  font-size: 16px;
+  margin: 0 0 12px;
+}
+
+.result-status {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 4px;
+}
+
+.result-sub {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.result-denied .result-status,
+.result-notfound .result-status {
+  color: var(--stamp-red);
+}
+
+.result-ok .result-title {
+  color: var(--system-green);
+}
+
+/* ===== 驗屍報告：掃描文件呈現 ===== */
+.photo-frame {
+  background: #DAD6C9;
+  padding: 20px 12px;
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+.photo-paper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: #F2EEE1;
+  padding: 26px 22px 22px;
+  transform: rotate(-0.3deg);
+  box-shadow:
+    0 3px 10px rgba(0,0,0,0.18),
+    0 1px 2px rgba(0,0,0,0.12);
+  font-family: "Noto Serif TC", serif;
+  color: #2A281F;
+}
+
+.photo-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(0,0,0,0.03) 0%, transparent 12%),
+              radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.06) 100%);
+  pointer-events: none;
+}
+
+.photo-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.paper-org {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin: 0 0 2px;
+  color: #4A4738;
+}
+
+.paper-title {
+  text-align: center;
+  font-size: 19px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin: 0 0 18px;
+}
+
+.paper-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.paper-table td {
+  padding: 6px 4px;
+  border-bottom: 1px solid rgba(42,40,31,0.25);
+}
+
+.paper-table td:first-child {
+  width: 34%;
+  color: #4A4738;
+  letter-spacing: 2px;
+}
+
+.paper-section-title {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0 0 8px;
+  border-bottom: 1px solid rgba(42,40,31,0.35);
+  padding-bottom: 4px;
+}
+
+.paper-body {
+  font-size: 13.5px;
+  line-height: 1.9;
+  margin: 0 0 22px;
+}
+
+.report-note {
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ===== 目擊者陳述 ===== */
+.witness-block {
+  margin-bottom: 26px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.witness-who {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-family: "Courier New", monospace;
+  margin: 0 0 10px;
+}
+
+.witness-qa {
+  font-size: 14.5px;
+  margin: 0 0 8px;
+  line-height: 1.7;
+}
+
+.witness-qa .q {
+  color: var(--ink-soft);
+  font-weight: bold;
+}
+
+.witness-qa .a {
+  color: var(--ink);
+  font-weight: bold;
+}
+
+.redact-line {
+  background: var(--redact);
+  color: var(--redact);
+  border-radius: 2px;
+  user-select: none;
+}
+
+.witness-note {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 16px 0 0;
+}
+
+.doc-footnote {
+  font-size: 12px;
+  color: var(--ink-soft);
+  border-top: 1px dashed var(--line);
+  padding-top: 12px;
+  margin: 0 0 30px;
+}
+
+/* ===== 回信區塊 ===== */
+.reply-block {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--line);
+}
+
+.reply-heading {
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin: 0 0 14px;
+}
+
+.reply-template {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  background: var(--paper-dark);
+  padding: 14px 12px;
+  border: 1px solid var(--line);
+}
+
+.reply-input {
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  border: none;
+  border-bottom: 2px solid var(--ink-soft);
+  background: transparent;
+  padding: 2px 4px;
+  width: 140px;
+  text-align: center;
+  color: var(--ink);
+}
+
+.reply-input:focus-visible {
+  outline: none;
+  border-bottom-color: var(--system-green);
+}
+
+.reply-status {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.reply-status.success {
+  color: var(--system-green);
+  font-weight: bold;
+}
+
+.reply-status.pending {
+  color: var(--ink-soft);
+}
+
+.paper-signoff {
+  border-top: 1px dashed rgba(42,40,31,0.35);
+  padding-top: 14px;
+}
+
+.paper-signoff-row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(42,40,31,0.28);
+  font-size: 13px;
+  min-height: 30px;
+}
+
+.paper-signoff-label {
+  color: #4A4738;
+  letter-spacing: 2px;
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+.signature-img {
+  display: block;
+  filter: contrast(1.05);
+}
+
+.signature-combined {
+  width: 150px;
+  margin: -10px 0 -20px -4px;
+}
+
+/* ===== 報告文件區 ===== */
+.report-section {
+  margin-bottom: 28px;
+}
+
+.report-section h2 {
+  font-size: 16px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+
+.report-section p {
+  font-size: 15px;
+  margin: 0;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--paper-dark);
+}
+
+.report-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.report-table td:first-child {
+  width: 32%;
+  color: var(--ink-soft);
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+}
+
+.report-table tr:last-child td {
+  border-bottom: none;
+}
+
+.stamp-section {
+  background: var(--paper-dark);
+  padding: 18px 16px;
+  border-left: 3px solid var(--stamp-red);
+}
+
+.signoff-block {
+  margin-top: 14px;
+}
+
+.signoff-row {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  font-family: "Courier New", monospace;
+  padding: 6px 0;
+}
+
+.signoff-label {
+  width: 80px;
+  color: var(--ink-soft);
+  flex-shrink: 0;
+}
+
+.redact-bar {
+  background: var(--redact);
+  color: var(--redact);
+  letter-spacing: -1px;
+  border-radius: 2px;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--ink-soft);
+  padding: 12px 28px;
+  text-decoration: none;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  min-height: 44px;
+  line-height: 20px;
+}
+
+/* ===== 手機優化 ===== */
+@media (max-width: 480px) {
+  .doc-page { padding: 20px 16px 50px; }
+  .doc-title { font-size: 22px; }
+  .letter { padding: 18px 16px; font-size: 15px; }
+  .doc-meta { font-size: 11px; gap: 10px; }
+  .sys-header { font-size: 12px; padding: 10px 14px; }
+}
