@@ -56,7 +56,9 @@ const CASE_DB = {
 };
 
 function hasManagerAccess() {
-  return localStorage.getItem("manager_access") === "true";
+  // 解鎖狀態要跟「目前登入的身分」綁在一起，而不是永久成就——
+  // 用9021（菜鳥）登入時，就算之前用7734解鎖過，也應該要是鎖住的狀態
+  return (localStorage.getItem("current_account") || "9021") === "7734";
 }
 
 // ===== 尚未歸檔的案件代號 =====

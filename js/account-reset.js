@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     localStorage.setItem("manager_access", "true");
+    localStorage.setItem("current_account", "7734");
     result.innerHTML = `
       <div class="result-panel result-ok">
         <p class="result-title">驗證成功</p>

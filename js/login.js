@@ -16,18 +16,25 @@ document.addEventListener("DOMContentLoaded", () => {
   loginBtn.addEventListener("click", () => {
     const account = accountInput.value.trim();
     if (account === "9021" || account === "7734") {
+      localStorage.setItem("current_account", account);
       window.location.href = "index.html";
       return;
     }
     msg.textContent = "帳號或密碼錯誤，請確認後再試一次。";
   });
 
-  [rememberedBtn9021, rememberedBtn7734].forEach(btn => {
-    if (!btn) return;
-    btn.addEventListener("click", () => {
+  if (rememberedBtn9021) {
+    rememberedBtn9021.addEventListener("click", () => {
+      localStorage.setItem("current_account", "9021");
       window.location.href = "index.html";
     });
-  });
+  }
+  if (rememberedBtn7734) {
+    rememberedBtn7734.addEventListener("click", () => {
+      localStorage.setItem("current_account", "7734");
+      window.location.href = "index.html";
+    });
+  }
 
   forgotLink.addEventListener("click", (e) => {
     e.preventDefault();
