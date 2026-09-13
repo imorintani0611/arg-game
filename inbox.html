@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>刑案管理系統 CMS-7 | 信箱</title>
-<link rel="stylesheet" href="css/style.css?v=5">
+<link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 
@@ -30,7 +30,7 @@
   <h1 class="doc-title">收件匣</h1>
   <p class="doc-sub" data-unread-label>7 封未讀</p>
 
-  <ul class="mail-list">
+  <ul class="mail-list" id="rookieInbox">
     <li class="mail-item unread" data-mail-id="mail1">
       <a href="mail1.html" class="mail-link">
         <div class="mail-line1">
@@ -103,6 +103,10 @@
     </li>
   </ul>
 
+  <div id="managerInbox" style="display:none">
+    <p class="empty-inbox">目前沒有郵件。</p>
+  </div>
+
   <section class="action-block">
     <a href="index.html" class="btn-secondary">返回系統首頁</a>
   </section>
@@ -113,6 +117,6 @@
   <span>本系統僅供內部使用 · 存取紀錄將被留存</span>
 </footer>
 
-<script src="js/site.js?v=5"></script>
+<script src="js/site.js?v=6"></script>
 </body>
 </html>

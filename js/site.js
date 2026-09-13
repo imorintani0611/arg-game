@@ -18,6 +18,9 @@ function markMailRead(id) {
 }
 
 function getUnreadCount() {
+  if (localStorage.getItem("manager_access") === "true") {
+    return 0;
+  }
   return getUnlockedMailIds().filter(id => !isMailRead(id)).length;
 }
 
@@ -56,6 +59,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const mail7Item = document.getElementById("mail7Item");
   if (mail7Item) {
     mail7Item.style.display = localStorage.getItem("reply_sent") === "true" ? "" : "none";
+  }
+
+  // 取得主管權限後，全站的存取層級與已登入編號都要同步更新
+  const hasManagerAccess = localStorage.getItem("manager_access") === "true";
+  if (hasManagerAccess) {
+    document.querySelectorAll(".access-level").forEach(el => {
+      el.textContent = "主管";
+    });
+    document.querySelectorAll(".logged-in-id").forEach(el => {
+      el.textContent = "7734";
+    });
+  }
+
+  // 信箱頁面：主管帳號跟菜鳥帳號看到的信件不一樣
+  const rookieInbox = document.getElementById("rookieInbox");
+  const managerInbox = document.getElementById("managerInbox");
+  if (rookieInbox && managerInbox) {
+    rookieInbox.style.display = hasManagerAccess ? "none" : "";
+    managerInbox.style.display = hasManagerAccess ? "" : "none";
   }
 
   updateMailBadges();

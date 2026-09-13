@@ -77,7 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
     result.innerHTML = `
       <div class="result-panel result-ok">
         <p class="result-title">驗證成功</p>
-        <p class="result-sub">已取得主管層級存取權限。案件查詢系統中原本權限不足的紀錄，現在可以查看了。</p>
+        <p class="result-sub">已取得主管層級存取權限，正在為您導向系統首頁……</p>
       </div>`;
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 1200);
   });
 });
