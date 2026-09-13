@@ -26,7 +26,7 @@ const PERSONNEL_DB = {
 };
 
 function personnelNormalize(input) {
-  return input.trim();
+  return input.trim().replace(/\s+/g, "");
 }
 
 function personnelNormalizeCode(input) {
