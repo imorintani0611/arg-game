@@ -1,0 +1,131 @@
+/* ===== PPT論壇風格 ===== */
+.ppt-body {
+  margin: 0;
+  background: #000000;
+  color: #DDDDDD;
+  font-family: "Courier New", "PMingLiU", monospace;
+  font-size: 14px;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+.ppt-topbar {
+  background: #0055AA;
+  color: #FFFFFF;
+  padding: 6px 10px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.ppt-article {
+  padding: 10px 12px 0;
+}
+
+.ppt-meta-row {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  color: #AAAAAA;
+  margin-bottom: 2px;
+}
+
+.ppt-meta-label {
+  color: #00AA00;
+  width: 32px;
+  flex-shrink: 0;
+}
+
+.ppt-meta-value {
+  color: #DDDDDD;
+}
+
+.ppt-title-value {
+  color: #FFDD55;
+}
+
+.ppt-divider {
+  border: none;
+  border-top: 1px dashed #444444;
+  margin: 10px 0;
+}
+
+.ppt-content {
+  padding: 0 12px;
+  white-space: pre-wrap;
+  line-height: 1.8;
+  color: #EEEEEE;
+}
+
+.ppt-comments {
+  padding: 0 12px;
+  margin-top: 6px;
+}
+
+.ppt-comment {
+  display: flex;
+  gap: 4px;
+  font-size: 13px;
+  line-height: 1.9;
+  border-top: 1px solid #1A1A1A;
+  padding: 3px 0;
+  flex-wrap: wrap;
+}
+
+.ppt-tag {
+  width: 28px;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+.ppt-tag.push { color: #00AA00; }
+.ppt-tag.boo { color: #4499FF; }
+.ppt-tag.arrow { color: #AAAAAA; }
+
+.ppt-comment.boo-comment .ppt-tag.boo {
+  color: #FF5555;
+}
+
+.ppt-id {
+  color: #55AAFF;
+  flex-shrink: 0;
+}
+
+.ppt-text {
+  color: #DDDDDD;
+  flex: 1;
+  min-width: 0;
+}
+
+.ppt-time {
+  color: #666666;
+  font-size: 12px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.ppt-folded {
+  display: flex;
+  gap: 4px;
+  font-size: 13px;
+  border-top: 1px solid #1A1A1A;
+  padding: 3px 0;
+  color: #666666;
+}
+
+.ppt-folded-btn {
+  background: none;
+  border: none;
+  color: #4499FF;
+  text-decoration: underline;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 0;
+}
+
+.ppt-back {
+  display: block;
+  margin: 20px 12px 0;
+  color: #4499FF;
+  font-size: 13px;
+  text-decoration: underline;
+}
