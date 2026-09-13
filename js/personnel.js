@@ -14,13 +14,15 @@ const PERSONNEL_DB = {
   },
   "劉育豪": {
     code: "7734",
+    photo: "images/liu_yuhao.jpg",
     fields: {
       "單位": "臺北市政府警察局中山分局",
       "職級": "分局長",
       "到職日期": "2007年3月",
       "離職日期": "－",
       "離職原因": "－",
-      "照片": "（可檢視）"
+      "電子郵件": "yuhao.liu@tcpd.gov.tw",
+      "聯絡電話": "(02) 2555-6789 分機 210"
     }
   }
 };
@@ -69,9 +71,14 @@ document.addEventListener("DOMContentLoaded", () => {
       <tr><td>${label}</td><td>${value}</td></tr>
     `).join("");
 
+    const photoHtml = record.photo
+      ? `<img src="${record.photo}" alt="${name} 證件照" class="personnel-photo">`
+      : "";
+
     result.innerHTML = `
       <div class="result-panel result-ok">
         <p class="result-title">${name}（警員編號 ${code}）</p>
+        ${photoHtml}
         <table class="report-table">
           ${fieldsHtml}
         </table>

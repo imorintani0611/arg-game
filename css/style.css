@@ -598,6 +598,13 @@ body {
   color: var(--system-green);
 }
 
+.personnel-photo {
+  display: block;
+  width: 120px;
+  margin: 4px 0 16px;
+  border: 1px solid var(--line);
+}
+
 .result-pending .result-status {
   color: var(--ink-soft);
 }
