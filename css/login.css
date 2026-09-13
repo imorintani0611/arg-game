@@ -1,0 +1,124 @@
+/* ===== 登入頁面 ===== */
+.login-body {
+  margin: 0;
+  min-height: 100vh;
+  background: #171613;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  font-family: "Noto Serif TC", serif;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 340px;
+  background: #E9E6DD;
+  border-top: 4px solid #2F4A3A;
+  padding: 28px 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.login-system {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #4A4F45;
+  margin: 0 0 4px;
+}
+
+.login-title {
+  font-size: 21px;
+  margin: 0 0 4px;
+  color: #232821;
+}
+
+.login-sub {
+  font-size: 13px;
+  color: #4A4F45;
+  margin: 0 0 22px;
+}
+
+.login-label {
+  display: block;
+  font-size: 12px;
+  color: #4A4F45;
+  margin-bottom: 6px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px;
+  font-family: "Courier New", monospace;
+  font-size: 15px;
+  border: 1px solid #B8B2A0;
+  background: #F1EEE5;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.login-btn {
+  width: 100%;
+  background: #2F4A3A;
+  color: #F1EEE5;
+  border: none;
+  padding: 13px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: "Courier New", monospace;
+  min-height: 44px;
+}
+
+.login-btn:active {
+  background: #24382C;
+}
+
+.login-msg {
+  font-size: 13px;
+  color: #8B2635;
+  min-height: 18px;
+  margin: 10px 0 0;
+}
+
+.remembered-block {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px dashed #B8B2A0;
+}
+
+.remembered-label {
+  font-size: 12px;
+  color: #4A4F45;
+  margin: 0 0 8px;
+}
+
+.remembered-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #F1EEE5;
+  border: 1px solid #B8B2A0;
+  padding: 12px 14px;
+  min-height: 44px;
+}
+
+.remembered-id {
+  font-family: "Courier New", monospace;
+  font-size: 15px;
+  color: #232821;
+}
+
+.remembered-tag {
+  font-size: 11px;
+  color: #4A4F45;
+}
+
+.login-forgot {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: #4A4F45;
+  margin-top: 18px;
+  text-decoration: underline;
+}

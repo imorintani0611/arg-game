@@ -479,6 +479,30 @@ body {
   outline-offset: 2px;
 }
 
+.btn-danger {
+  display: inline-block;
+  background: var(--stamp-red);
+  color: #F1EEE5;
+  padding: 14px 32px;
+  border: none;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  min-height: 44px;
+}
+
+.btn-danger:active {
+  background: #6E1D29;
+}
+
+.logout-msg {
+  font-size: 13px;
+  color: var(--stamp-red);
+  margin-top: 12px;
+  min-height: 18px;
+}
+
 /* ===== 頁尾 ===== */
 .sys-footer {
   text-align: center;

@@ -1,5 +1,13 @@
 // ===== 信件已讀狀態管理 =====
-const MAIL_IDS = ["mail1", "mail2", "mail3", "mail4", "mail5", "mail6", "mail7"];
+const BASE_MAIL_IDS = ["mail1", "mail2", "mail3", "mail4", "mail5", "mail6"];
+
+function getUnlockedMailIds() {
+  const ids = [...BASE_MAIL_IDS];
+  if (localStorage.getItem("reply_sent") === "true") {
+    ids.push("mail7");
+  }
+  return ids;
+}
 
 function isMailRead(id) {
   return localStorage.getItem("read_" + id) === "true";
@@ -10,7 +18,7 @@ function markMailRead(id) {
 }
 
 function getUnreadCount() {
-  return MAIL_IDS.filter(id => !isMailRead(id)).length;
+  return getUnlockedMailIds().filter(id => !isMailRead(id)).length;
 }
 
 function updateMailBadges() {
@@ -43,6 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
       item.classList.remove("unread");
     }
   });
+
+  // mail7要等玩家送出第一封回信之後才會出現在信箱列表裡
+  const mail7Item = document.getElementById("mail7Item");
+  if (mail7Item) {
+    mail7Item.style.display = localStorage.getItem("reply_sent") === "true" ? "" : "none";
+  }
 
   updateMailBadges();
 });

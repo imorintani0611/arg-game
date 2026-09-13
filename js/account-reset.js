@@ -29,6 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetBtn = document.getElementById("resetBtn");
   const result = document.getElementById("resetResult");
 
+  // 如果網址帶有 ?code=xxx，自動帶入警員編號欄位
+  const params = new URLSearchParams(window.location.search);
+  const prefill = params.get("code");
+  if (prefill) {
+    codeInput.value = prefill;
+  }
+
   let selectedQuestion = null;
 
   buttons.forEach(btn => {
