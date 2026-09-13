@@ -62,6 +62,13 @@ const CASE_DB = {
       { name: "契約書_附件三.docx", locked: true, note: "分類層級：特殊（本帳號無法調閱）" },
       { name: "郵件備份_0318.eml", locked: true, note: "分類層級：特殊（本帳號無法調閱）" }
     ]
+  },
+  "TR15102019": {
+    access: true,
+    title: "人事異動紀錄 · 羅美玉",
+    items: [
+      { name: "調職紀錄", link: "transfer-record.html" }
+    ]
   }
 };
 
@@ -80,7 +87,8 @@ const PENDING_CODES = [
   "CR30042024",
   "SA02032024",
   "MP19012024",
-  "DR02092024"
+  "DR02092024",
+  "TR11072024"
 ];
 
 function renderResult(container, code) {

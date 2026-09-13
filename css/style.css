@@ -275,6 +275,15 @@ body {
   text-align: center;
 }
 
+.archive-heading {
+  font-size: 13px;
+  color: var(--ink-soft);
+  letter-spacing: 1px;
+  margin: 24px 0 8px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+}
+
 /* ===== 信件詳情頁 ===== */
 .mail-detail-meta {
   display: flex;

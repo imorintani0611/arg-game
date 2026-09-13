@@ -92,9 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // 信箱頁面：主管帳號跟菜鳥帳號看到的信件不一樣
   const rookieInbox = document.getElementById("rookieInbox");
   const managerInbox = document.getElementById("managerInbox");
+  const managerArchive = document.getElementById("managerArchive");
   if (rookieInbox && managerInbox) {
     rookieInbox.style.display = isManagerIdentity ? "none" : "";
     managerInbox.style.display = isManagerIdentity ? "" : "none";
+  }
+  if (managerArchive) {
+    managerArchive.style.display = isManagerIdentity ? "" : "none";
   }
 
   updateMailBadges();
