@@ -3,37 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>刑案管理系統 CMS-7 | 帳號重設</title>
+<title>CMS-7 刑案管理系統 | 帳號重設</title>
 <link rel="stylesheet" href="css/style.css?v=4">
+<link rel="stylesheet" href="css/login.css?v=4">
 </head>
-<body>
+<body class="login-body">
 
-<div class="scanline"></div>
+<div class="login-card">
+  <p class="login-system">CMS-7</p>
+  <h1 class="login-title">帳號密碼重設</h1>
+  <p class="login-sub">請輸入警員編號並回答安全問題</p>
 
-<header class="sys-header">
-  <a href="index.html" class="sys-header-left">
-    <span class="sys-badge">CMS-7</span>
-    <span class="sys-title">帳號重設</span>
-  </a>
-  <nav class="sys-nav">
-    <a href="personnel.html" class="nav-icon" aria-label="人員查詢">🪪</a>
-    <a href="evidence.html" class="nav-icon" aria-label="證據系統">📁</a>
-    <a href="inbox.html" class="nav-icon mail-entry" aria-label="信箱">
-      <span class="mail-icon">✉</span>
-      <span class="mail-badge">7</span>
-    </a>
-  </nav>
-</header>
+  <label class="login-label" for="resetCode">警員編號</label>
+  <input type="text" id="resetCode" class="login-input" autocomplete="off" placeholder="輸入警員編號">
 
-<main class="doc-page">
-
-  <h1 class="doc-title">帳號密碼重設</h1>
-  <p class="doc-sub">請輸入警員編號並回答安全問題</p>
-
-  <label class="field-label" for="resetCode">警員編號</label>
-  <input type="text" id="resetCode" class="passcode-input" autocomplete="off" placeholder="輸入警員編號">
-
-  <p class="field-label" style="margin-top:20px;">請選擇安全問題</p>
+  <p class="login-label" style="margin-top:4px;">請選擇安全問題</p>
   <div class="question-options">
     <button type="button" class="question-btn" data-q="birthday">我的生日</button>
     <button type="button" class="question-btn" data-q="class">我小學的班級</button>
@@ -41,20 +25,16 @@
   </div>
 
   <div id="answerBlock" style="display:none;">
-    <label class="field-label" for="resetAnswer" id="resetAnswerLabel">答案</label>
-    <input type="text" id="resetAnswer" class="passcode-input" autocomplete="off" placeholder="輸入答案">
-    <button id="resetBtn" class="btn-primary" style="width:100%">驗證</button>
+    <label class="login-label" for="resetAnswer" id="resetAnswerLabel">答案</label>
+    <input type="text" id="resetAnswer" class="login-input" autocomplete="off" placeholder="輸入答案">
+    <button id="resetBtn" class="login-btn">驗證</button>
   </div>
 
   <div id="resetResult"></div>
 
-</main>
-
-<footer class="sys-footer">
-  <span>本系統僅供內部使用 · 存取紀錄將被留存</span>
-</footer>
+  <a href="login.html" class="login-forgot">返回登入頁</a>
+</div>
 
 <script src="js/account-reset.js?v=4"></script>
-<script src="js/site.js?v=4"></script>
 </body>
 </html>
