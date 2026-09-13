@@ -1,8 +1,10 @@
 // ===== 帳號重設邏輯 =====
-// 正確組合：警員編號7734（劉育豪）+ 安全問題「我最開心的一天」+ 答案為女兒生日 11/06
+// 正確組合：警員編號7734（劉育豪）+ 安全問題「我最開心的一天」+ 答案為女兒完整生日
+// 新聞透露月日為11/06，表揚公告透露112年12月受獎時女兒9歲 → 反推出生年為民國103年（西元2014年）
+// 答案格式沿用站內慣例：日-月-年
 const RESET_TARGET_CODE = "7734";
 const RESET_TARGET_QUESTION = "happiest";
-const RESET_TARGET_ANSWER = "1106"; // 只比對數字部分，格式寬鬆比對
+const RESET_TARGET_ANSWER = "06112014"; // 日月年8碼，只比對數字部分
 
 function resetNormalizeCode(input) {
   return input.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
