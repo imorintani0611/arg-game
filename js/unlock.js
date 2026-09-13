@@ -50,7 +50,17 @@ const CASE_DB = {
     items: [
       { name: "員警到場處置紀錄", link: "factory-scene-report.html" },
       { name: "員工陳述（節錄）", link: "factory-witness.html" },
+      { name: "廠房異動紀錄", locked: true, link: "facility-change.html" },
       { name: "簽結意見", locked: true, note: "核准人：沈國樑（警政署署長） · 上級指示儘速結案", unlockedDetail: "核准人：沈國樑（警政署署長）。批示內容：「比照個案處理，勿再擴大。」" }
+    ]
+  },
+  "FC18032019": {
+    access: true,
+    title: "林秉澤與工廠異動 · 深度追查紀錄",
+    items: [
+      { name: "candy.pdf", locked: true, note: "分類層級：特殊（本帳號無法調閱）" },
+      { name: "契約書_附件三.docx", locked: true, note: "分類層級：特殊（本帳號無法調閱）" },
+      { name: "郵件備份_0318.eml", locked: true, note: "分類層級：特殊（本帳號無法調閱）" }
     ]
   }
 };
@@ -122,7 +132,9 @@ function renderResult(container, code) {
   }
 
   const itemsHtml = record.items.map(item => {
-    if (item.locked && !(hasManagerAccess() && item.unlockedDetail)) {
+    const isUnlocked = item.locked && hasManagerAccess() && (item.unlockedDetail || item.link);
+
+    if (item.locked && !isUnlocked) {
       return `
         <li class="attachment redacted">
           <span class="att-icon">🔒</span>
@@ -131,7 +143,17 @@ function renderResult(container, code) {
           ${item.note ? `<span class="att-note">${item.note}</span>` : ""}
         </li>`;
     }
-    if (item.locked && hasManagerAccess() && item.unlockedDetail) {
+    if (item.locked && isUnlocked && item.link) {
+      return `
+        <li class="attachment ok">
+          <a href="${item.link}" class="attachment-link">
+            <span class="att-icon">📄</span>
+            <span class="att-name">${item.name}</span>
+            <span class="att-tag">已解鎖</span>
+          </a>
+        </li>`;
+    }
+    if (item.locked && isUnlocked) {
       return `
         <li class="attachment ok">
           <span class="att-icon">📄</span>
