@@ -1,5 +1,5 @@
 // ===== 信件已讀狀態管理 =====
-const MAIL_IDS = ["mail1", "mail2", "mail3", "mail4", "mail5", "mail6"];
+const MAIL_IDS = ["mail1", "mail2", "mail3", "mail4", "mail5", "mail6", "mail7"];
 
 function isMailRead(id) {
   return localStorage.getItem("read_" + id) === "true";

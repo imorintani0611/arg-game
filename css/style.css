@@ -850,6 +850,30 @@ body {
   color: var(--ink-soft);
 }
 
+/* ===== 安全問題選擇按鈕 ===== */
+.question-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.question-btn {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  background: var(--paper-dark);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 10px 14px;
+  border-radius: 2px;
+}
+
+.question-btn.active {
+  background: var(--system-green);
+  color: #F1EEE5;
+  border-color: var(--system-green);
+}
+
 .paper-signoff {
   border-top: 1px dashed rgba(42,40,31,0.35);
   padding-top: 14px;

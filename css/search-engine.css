@@ -237,6 +237,21 @@ body.se-body {
   color: var(--se-ink-soft);
 }
 
+.notice-photo {
+  width: 100%;
+  max-width: 320px;
+  display: block;
+  margin: 16px auto 6px;
+  border: 1px solid #D8D8D8;
+}
+
+.notice-caption {
+  text-align: center;
+  font-size: 12px;
+  color: var(--se-ink-soft);
+  margin: 0;
+}
+
 /* ===== 新聞文章頁 ===== */
 .news-article {
   max-width: 560px;
