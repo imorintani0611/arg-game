@@ -17,10 +17,18 @@ function markMailRead(id) {
   localStorage.setItem("read_" + id, "true");
 }
 
+function getManagerMailIds() {
+  const ids = ["mmail1", "mmail2"];
+  if (isMailRead("mmail2")) {
+    ids.push("mmail3");
+  }
+  return ids;
+}
+
 function getUnreadCount() {
   const currentAccount = localStorage.getItem("current_account") || "9021";
   if (currentAccount === "7734") {
-    return 0;
+    return getManagerMailIds().filter(id => !isMailRead(id)).length;
   }
   return getUnlockedMailIds().filter(id => !isMailRead(id)).length;
 }
@@ -60,6 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const mail7Item = document.getElementById("mail7Item");
   if (mail7Item) {
     mail7Item.style.display = localStorage.getItem("reply_sent") === "true" ? "" : "none";
+  }
+
+  // mmail3（第二封威脅信）要等mmail2被讀過才會出現
+  const mmail3Item = document.getElementById("mmail3Item");
+  if (mmail3Item) {
+    mmail3Item.style.display = isMailRead("mmail2") ? "" : "none";
   }
 
   // 取得主管權限跟顯示的身分是兩件事：
