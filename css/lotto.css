@@ -1,0 +1,211 @@
+/* ===== 台灣彩券網站：刻意俗氣的風格 ===== */
+.lotto-body {
+  margin: 0;
+  background: #FFF8E7;
+  color: #333333;
+  font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+  font-size: 14px;
+  min-height: 100vh;
+}
+
+.lotto-topbar {
+  background: linear-gradient(180deg, #C8102E 0%, #9B0C23 100%);
+  color: #FFE98A;
+  padding: 8px 12px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lotto-marquee {
+  background: #FFEB3B;
+  color: #C8102E;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-bottom: 2px solid #C8102E;
+}
+
+.lotto-marquee span {
+  display: inline-block;
+  animation: lotto-scroll 12s linear infinite;
+}
+
+@keyframes lotto-scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.lotto-banner {
+  width: 100%;
+  display: block;
+}
+
+.lotto-nav {
+  display: flex;
+  background: #1B4F9C;
+  border-bottom: 3px solid #FFD700;
+}
+
+.lotto-nav a {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 10px 4px;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.lotto-nav a:last-child { border-right: none; }
+
+.lotto-main {
+  padding: 12px;
+}
+
+.lotto-section-title {
+  background: linear-gradient(90deg, #C8102E 0%, #E8384F 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 4px 4px 0 0;
+  margin: 0;
+}
+
+.lotto-panel {
+  background: #fff;
+  border: 2px solid #C8102E;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.lotto-draw-date {
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 12px;
+}
+
+.lotto-balls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.lotto-ball {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 800;
+  color: #333;
+  background: radial-gradient(circle at 30% 30%, #FFFFFF 0%, #FFE082 60%, #FFB300 100%);
+  border: 2px solid #E6A700;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+
+.lotto-ball.special {
+  background: radial-gradient(circle at 30% 30%, #FFFFFF 0%, #FF8A80 60%, #D32F2F 100%);
+  border-color: #B71C1C;
+  color: #fff;
+}
+
+.lotto-plus {
+  font-size: 20px;
+  font-weight: 800;
+  color: #C8102E;
+}
+
+.lotto-jackpot {
+  background: #FFEB3B;
+  border: 2px dashed #C8102E;
+  border-radius: 4px;
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.lotto-jackpot-label {
+  font-size: 13px;
+  color: #9B0C23;
+  margin: 0 0 4px;
+}
+
+.lotto-jackpot-amount {
+  font-size: 26px;
+  font-weight: 900;
+  color: #C8102E;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.lotto-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.lotto-table th {
+  background: #1B4F9C;
+  color: #fff;
+  padding: 8px 6px;
+  border: 1px solid #ddd;
+}
+
+.lotto-table td {
+  padding: 8px 6px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.lotto-table tr:nth-child(even) td {
+  background: #F5F5F5;
+}
+
+.lotto-notice {
+  background: #FFF3E0;
+  border-left: 4px solid #FF9800;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.lotto-logo-img {
+  width: 100%;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.lotto-footer {
+  background: #333333;
+  color: #BBBBBB;
+  font-size: 11px;
+  line-height: 1.8;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.lotto-ad {
+  background: #FFF;
+  border: 1px dashed #999;
+  text-align: center;
+  font-size: 11px;
+  color: #999;
+  padding: 20px 12px;
+  margin-bottom: 16px;
+}

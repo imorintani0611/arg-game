@@ -96,8 +96,8 @@ const CASE_DB = {
     title: "竊盜案 · 機車零件竊盜",
     items: [
       { name: "竊盜案處理紀錄", link: "decoy-cr2014.html" },
-      { name: "現場照片", locked: true },
-      { name: "監視器畫面調閱申請", locked: true }
+      { name: "現場照片", locked: true, unlockedDetail: "照片3張：機車後照鏡遭拆卸特寫、地面散落螺絲、停車場入口。畫質模糊，無可辨識人影。" },
+      { name: "監視器畫面調閱申請", locked: true, unlockedDetail: "申請遭駁回，理由欄位：「該時段錄影設備維修中，無畫面可供調閱。」" }
     ]
   },
   "DR18062014": {
@@ -105,23 +105,25 @@ const CASE_DB = {
     title: "死亡登記 · 陳○○",
     items: [
       { name: "死亡登記基本資料", link: "decoy-dr2014.html" },
-      { name: "相驗紀錄", locked: true }
+      { name: "相驗紀錄", locked: true, unlockedDetail: "死因：慢性阻塞性肺病併發肺炎。無外力介入跡象，家屬同意免解剖。" }
     ]
   },
   "SA18062014": {
     access: false,
-    title: "可疑死亡通報（已併案）"
+    title: "可疑死亡通報（已併案）",
+    unlockedDetail: "經查證後確認為自然死亡，已併入DR18062014辦理，本案註銷。"
   },
   "MP18062014": {
     access: false,
-    title: "失蹤人口通報（已尋獲）"
+    title: "失蹤人口通報（已尋獲）",
+    unlockedDetail: "受理當日下午於親友住處尋獲，身體狀況良好，本案結案。"
   },
   "TR18062014": {
     access: true,
     title: "人事異動紀錄",
     items: [
-      { name: "異動清冊", locked: true },
-      { name: "核定函", locked: true }
+      { name: "異動清冊", locked: true, unlockedDetail: "本期異動共47人，含屆齡退休12人、升遷調任23人、平行調動12人。名冊另行存查。" },
+      { name: "核定函", locked: true, unlockedDetail: "依警察人員人事條例辦理，自103年7月1日起生效。" }
     ]
   },
   "TR04092020": {
@@ -143,11 +145,11 @@ const CASE_DB = {
     title: '<span class="redact-bar">███</span> · 相關檔案',
     items: [
       { name: '<span class="redact-bar">██████</span>.jpg', link: "ca-family-photo.html" },
-      { name: "驗屍報告.pdf", locked: true },
-      { name: "廠房週間紀錄.xlsx", locked: true },
-      { name: "交易清單.xlsx", locked: true },
-      { name: "監控錄影備份.mp4", locked: true },
-      { name: "人員調度表.docx", locked: true }
+      { name: "驗屍報告.pdf", locked: true, note: "分類層級：特殊（本帳號無法調閱）" },
+      { name: "廠房週間紀錄.xlsx", locked: true, note: "分類層級：特殊（本帳號無法調閱）" },
+      { name: "交易清單.xlsx", locked: true, note: "分類層級：特殊（本帳號無法調閱）" },
+      { name: "監控錄影備份.mp4", locked: true, note: "分類層級：特殊（本帳號無法調閱）" },
+      { name: "人員調度表.docx", locked: true, note: "分類層級：特殊（本帳號無法調閱）" }
     ]
   }
 };
