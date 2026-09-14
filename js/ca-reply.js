@@ -1,8 +1,8 @@
 // ===== CA10102019 回信機制 =====
-// 前提：玩家要先查過CA10102019這個案件代號，才會在mail7看到回信選項
+// 前提：玩家要先查過CA20082020這個案件代號，才會在mail7看到回信選項
 // 「你是誰」沒有回覆 -> 追加欄位留在mail7原地
 // 「你的目的是什麼」有回覆 -> 新信mail8，追加欄位跟著那封信走
-// 猜對「李承翰」-> 導向mail9坦白信
+// 猜對「李承翰」-> 原地顯示已送出，mail9坦白信自然出現在信箱列表裡讓玩家自己點進去
 
 const CA_TARGET_NAME = "李承翰";
 
@@ -17,11 +17,23 @@ function setupNameGuess(inputId, btnId, resultId) {
   const result = document.getElementById(resultId);
   if (!btn) return;
 
+  // 如果已經猜對過，直接顯示已讀狀態，不用再猜一次
+  if (localStorage.getItem("ca_identity_revealed") === "true") {
+    input.disabled = true;
+    btn.disabled = true;
+    result.textContent = "已送出，對方已讀。";
+    result.className = "reply-status success";
+    return;
+  }
+
   btn.addEventListener("click", () => {
     const guess = caNormalizeName(input.value);
     if (guess === CA_TARGET_NAME) {
       localStorage.setItem("ca_identity_revealed", "true");
-      window.location.href = "mail9.html";
+      input.disabled = true;
+      btn.disabled = true;
+      result.textContent = "已送出，對方已讀。";
+      result.className = "reply-status success";
     } else {
       result.textContent = "已送出，尚無回應。";
       result.className = "reply-status pending";
@@ -79,10 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== mail8：「你的目的是什麼」的回覆信 + 追加欄位 =====
   const mail8Btn = document.getElementById("caNameBtnMail8");
   if (mail8Btn) {
-    if (localStorage.getItem("ca_identity_revealed") === "true") {
-      window.location.href = "mail9.html";
-      return;
-    }
     setupNameGuess("caNameInputMail8", "caNameBtnMail8", "caNameResultMail8");
   }
 });
