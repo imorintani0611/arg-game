@@ -72,9 +72,9 @@ const CASE_DB = {
   },
   "CA10102019": {
     access: true,
-    title: "李承翰 · 相關檔案",
+    title: '<span class="redact-bar">███</span> · 相關檔案',
     items: [
-      { name: "全家福.jpg", link: "ca-family-photo.html" },
+      { name: '<span class="redact-bar">██████</span>.jpg', link: "ca-family-photo.html" },
       { name: "驗屍報告.pdf", locked: true },
       { name: "廠房週間紀錄.xlsx", locked: true },
       { name: "交易清單.xlsx", locked: true },
