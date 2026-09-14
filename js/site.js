@@ -36,17 +36,15 @@ function markMailRead(id) {
   localStorage.setItem("read_" + id, "true");
 }
 
-// 劉育豪的勸告信（mail10）需要玩家湊齊七項線索才會出現：
-// 兩份坦白信附件、FC/CR/TR三個案件代碼、黑特警察貼文、羅美玉人員資料
+// 劉育豪的勸告信（mail10）需要玩家湊齊五項線索才會出現：
+// 兩份坦白信附件、FC/CR/TR三個案件代碼
 function liuMailUnlocked() {
   const requiredFlags = [
     "viewed_liu_history",
     "viewed_notebook",
     "viewed_fc",
     "viewed_cr",
-    "viewed_hate_post",
-    "viewed_tr_luo",
-    "viewed_luo_personnel"
+    "viewed_tr_luo"
   ];
   return requiredFlags.every(flag => localStorage.getItem(flag) === "true");
 }
