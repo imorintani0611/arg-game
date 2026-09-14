@@ -12,7 +12,7 @@ function getUnlockedMailIds() {
   if (localStorage.getItem("ca_identity_revealed") === "true") {
     ids.push("mail9");
   }
-  if (localStorage.getItem("viewed_liu_history") === "true") {
+  if (liuMailUnlocked()) {
     ids.push("mail10");
   }
   const liuOutcome = localStorage.getItem("liu_reply_outcome");
@@ -34,6 +34,21 @@ function isMailRead(id) {
 
 function markMailRead(id) {
   localStorage.setItem("read_" + id, "true");
+}
+
+// 劉育豪的勸告信（mail10）需要玩家湊齊七項線索才會出現：
+// 兩份坦白信附件、FC/CR/TR三個案件代碼、黑特警察貼文、羅美玉人員資料
+function liuMailUnlocked() {
+  const requiredFlags = [
+    "viewed_liu_history",
+    "viewed_notebook",
+    "viewed_fc",
+    "viewed_cr",
+    "viewed_hate_post",
+    "viewed_tr_luo",
+    "viewed_luo_personnel"
+  ];
+  return requiredFlags.every(flag => localStorage.getItem(flag) === "true");
 }
 
 function getManagerMailIds() {
@@ -104,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // mail10（劉育豪的勸告信）要等玩家看過他的人事異動歷程才會出現
   const mail10Item = document.getElementById("mail10Item");
   if (mail10Item) {
-    mail10Item.style.display = localStorage.getItem("viewed_liu_history") === "true" ? "" : "none";
+    mail10Item.style.display = liuMailUnlocked() ? "" : "none";
   }
 
   // mail11/12/13：依照劉育豪回信的分支結果決定要顯示哪一封

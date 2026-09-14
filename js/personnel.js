@@ -105,6 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
           ${fieldsHtml}
         </table>
       </div>`;
+
+    if (name === "羅美玉") {
+      localStorage.setItem("viewed_luo_personnel", "true");
+    }
   });
 
   [nameInput, codeInput].forEach(input => {

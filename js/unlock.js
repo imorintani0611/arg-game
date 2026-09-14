@@ -233,6 +233,15 @@ function renderResult(container, code) {
   if (code === "CA20082020") {
     localStorage.setItem("viewed_ca", "true");
   }
+  if (code === "FC18032019") {
+    localStorage.setItem("viewed_fc", "true");
+  }
+  if (code === "CR16082020") {
+    localStorage.setItem("viewed_cr", "true");
+  }
+  if (code === "TR10092020") {
+    localStorage.setItem("viewed_tr_luo", "true");
+  }
 }
 
 // ===== 最近查詢紀錄 =====
