@@ -1,111 +1,88 @@
 // ===== CA10102019 回信機制 =====
-// 前提：玩家要先查過CA10102019這個案件代號
-// 選一次不能反悔，不管選哪個都要猜對「李承翰」才能看到坦白內容
+// 前提：玩家要先查過CA10102019這個案件代號，才會在mail7看到回信選項
+// 「你是誰」沒有回覆 -> 追加欄位留在mail7原地
+// 「你的目的是什麼」有回覆 -> 新信mail8，追加欄位跟著那封信走
+// 猜對「李承翰」-> 導向mail9坦白信
+
+const CA_TARGET_NAME = "李承翰";
 
 function caNormalizeName(input) {
   return input.trim();
 }
 
-const CA_TARGET_NAME = "李承翰";
+// 共用的「猜名字」邏輯，傳入對應的DOM元素id
+function setupNameGuess(inputId, btnId, resultId) {
+  const input = document.getElementById(inputId);
+  const btn = document.getElementById(btnId);
+  const result = document.getElementById(resultId);
+  if (!btn) return;
 
-const CA_CONFESSION = `
-  <p>沒錯，是我。李承翰。</p>
-  <p>我曾經是負責這個案子的警察，我不願意造假，所以被換掉了。</p>
-  <p>後來我發現，這一切遠比我想像的還要大——不只是一個人，是一群人。</p>
-  <p>我的家人也因此付出了代價。</p>
-  <p>我不知道還能相信誰，所以我選擇相信你。</p>
-  <p>你已經走到這一步了，剩下的，我需要你的幫忙。</p>
-`;
-
-function caRenderNameGuess(container) {
-  const alreadySolved = localStorage.getItem("ca_identity_revealed") === "true";
-
-  if (alreadySolved) {
-    container.innerHTML = `
-      <div class="letter" style="margin-top:16px;">
-        ${CA_CONFESSION}
-      </div>`;
-    return;
-  }
-
-  container.innerHTML = `
-    <div class="reply-template" style="margin-top:16px;">
-      <span>你是</span>
-      <input type="text" id="caNameInput" class="reply-input" autocomplete="off">
-      <span>吧？</span>
-    </div>
-    <button id="caNameBtn" class="btn-primary" style="width:100%">送出</button>
-    <p id="caNameResult" class="reply-status"></p>
-  `;
-
-  const nameInput = document.getElementById("caNameInput");
-  const nameBtn = document.getElementById("caNameBtn");
-  const nameResult = document.getElementById("caNameResult");
-
-  nameBtn.addEventListener("click", () => {
-    const guess = caNormalizeName(nameInput.value);
+  btn.addEventListener("click", () => {
+    const guess = caNormalizeName(input.value);
     if (guess === CA_TARGET_NAME) {
       localStorage.setItem("ca_identity_revealed", "true");
-      caRenderNameGuess(container);
+      window.location.href = "mail9.html";
     } else {
-      nameResult.textContent = "已送出，尚無回應。";
-      nameResult.className = "reply-status pending";
+      result.textContent = "已送出，尚無回應。";
+      result.className = "reply-status pending";
     }
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") btn.click();
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const block = document.getElementById("caReplyBlock");
-  if (!block) return;
 
-  if (localStorage.getItem("viewed_ca") === "true") {
-    block.style.display = "";
-  } else {
-    return;
-  }
-
-  const askWhoBtn = document.getElementById("askWhoBtn");
-  const askPurposeBtn = document.getElementById("askPurposeBtn");
-  const thread = document.getElementById("caReplyThread");
-
-  function lockChoice(choice) {
-    askWhoBtn.disabled = true;
-    askPurposeBtn.disabled = true;
-    askWhoBtn.classList.toggle("active", choice === "who");
-    askPurposeBtn.classList.toggle("active", choice === "purpose");
-  }
-
-  function renderChoice(choice) {
-    thread.innerHTML = "";
-    if (choice === "purpose") {
-      const replyP = document.createElement("div");
-      replyP.className = "letter";
-      replyP.style.marginTop = "16px";
-      replyP.innerHTML = "<p>我只是覺得所有人都值得知道真相。</p>";
-      thread.appendChild(replyP);
+  // ===== mail7：選擇問題的按鈕 + 「你是誰」的追加欄位 =====
+  const replyBlock = document.getElementById("caReplyBlock");
+  if (replyBlock) {
+    if (localStorage.getItem("viewed_ca") === "true") {
+      replyBlock.style.display = "";
     }
-    const guessBox = document.createElement("div");
-    thread.appendChild(guessBox);
-    caRenderNameGuess(guessBox);
+
+    const askWhoBtn = document.getElementById("askWhoBtn");
+    const askPurposeBtn = document.getElementById("askPurposeBtn");
+    const whoGuessBlock = document.getElementById("whoGuessBlock");
+
+    const savedChoice = localStorage.getItem("ca_reply_choice");
+    if (savedChoice) {
+      askWhoBtn.disabled = true;
+      askPurposeBtn.disabled = true;
+      askWhoBtn.classList.toggle("active", savedChoice === "who");
+      askPurposeBtn.classList.toggle("active", savedChoice === "purpose");
+    }
+    // 只有選「你是誰」才會在這一頁出現追加欄位
+    if (savedChoice === "who") {
+      whoGuessBlock.style.display = "";
+    }
+
+    askWhoBtn.addEventListener("click", () => {
+      if (localStorage.getItem("ca_reply_choice")) return;
+      localStorage.setItem("ca_reply_choice", "who");
+      askWhoBtn.disabled = true;
+      askPurposeBtn.disabled = true;
+      askWhoBtn.classList.add("active");
+      whoGuessBlock.style.display = "";
+    });
+
+    askPurposeBtn.addEventListener("click", () => {
+      if (localStorage.getItem("ca_reply_choice")) return;
+      localStorage.setItem("ca_reply_choice", "purpose");
+      window.location.href = "mail8.html";
+    });
+
+    setupNameGuess("caNameInput", "caNameBtn", "caNameResult");
   }
 
-  const savedChoice = localStorage.getItem("ca_reply_choice");
-  if (savedChoice) {
-    lockChoice(savedChoice);
-    renderChoice(savedChoice);
+  // ===== mail8：「你的目的是什麼」的回覆信 + 追加欄位 =====
+  const mail8Btn = document.getElementById("caNameBtnMail8");
+  if (mail8Btn) {
+    if (localStorage.getItem("ca_identity_revealed") === "true") {
+      window.location.href = "mail9.html";
+      return;
+    }
+    setupNameGuess("caNameInputMail8", "caNameBtnMail8", "caNameResultMail8");
   }
-
-  askWhoBtn.addEventListener("click", () => {
-    if (localStorage.getItem("ca_reply_choice")) return;
-    localStorage.setItem("ca_reply_choice", "who");
-    lockChoice("who");
-    renderChoice("who");
-  });
-
-  askPurposeBtn.addEventListener("click", () => {
-    if (localStorage.getItem("ca_reply_choice")) return;
-    localStorage.setItem("ca_reply_choice", "purpose");
-    lockChoice("purpose");
-    renderChoice("purpose");
-  });
 });

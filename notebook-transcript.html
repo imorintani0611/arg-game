@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>刑案管理系統 CMS-7 | 現場勘查初報</title>
+<title>刑案管理系統 CMS-7 | 逐字筆錄</title>
 <link rel="stylesheet" href="css/style.css?v=18">
 </head>
 <body>
@@ -17,10 +17,10 @@
   </a>
   <nav class="sys-nav">
     <a href="personnel.html" class="nav-icon" aria-label="人員查詢">🪪</a>
-    <a href="evidence.html" class="nav-icon active" aria-label="證據系統">📁</a>
+    <a href="evidence.html" class="nav-icon" aria-label="證據系統">📁</a>
     <a href="inbox.html" class="nav-icon mail-entry" aria-label="信箱">
       <span class="mail-icon">✉</span>
-      <span class="mail-badge">7</span>
+      <span class="mail-badge">1</span>
     </a>
   </nav>
 </header>
@@ -28,29 +28,22 @@
 <main class="doc-page">
 
   <div class="doc-meta">
-    <span>案件代號 TA06112019</span>
-    <span>文件類型 現場勘查初報</span>
+    <span>2020年8月16日</span>
+    <span>文件類型 逐字筆錄（私人筆記本）</span>
   </div>
 
-  <h1 class="doc-title">現場勘查初報</h1>
-  <p class="doc-sub">對外證據整理 · 摘要版</p>
+  <h1 class="doc-title">逐字筆錄</h1>
+  <p class="doc-sub">員工 藍文祥</p>
 
   <section class="report-section">
-    <h2>到場紀錄</h2>
-    <table class="report-table">
-      <tr><td>報案時間</td><td>2019年11月06日 14時22分</td></tr>
-      <tr><td>到場時間</td><td>2019年11月06日 14時41分</td></tr>
-      <tr><td>原承辦員警</td><td>李承翰</td></tr>
-      <tr><td>接任承辦</td><td>劉育豪</td></tr>
-    </table>
+    <img src="images/notebook_left.jpg" alt="逐字筆錄左頁" style="width:100%; border:1px solid var(--line); display:block;">
   </section>
 
-  <section class="report-section">
-    <p class="report-note">
-      李承翰員警因故調離案件，本案改由劉育豪員警接任承辦。
-      現場初步勘查結果詳見相驗報告及結案報告。
-    </p>
+  <section class="report-section" id="notebookMore" style="display:none">
+    <img src="images/notebook_right.jpg" alt="逐字筆錄右頁" style="width:100%; border:1px solid var(--line); display:block;">
   </section>
+
+  <button type="button" id="notebookMoreBtn" class="btn-secondary" style="width:100%; box-sizing:border-box;">顯示更多</button>
 
   <section class="action-block">
     <a href="evidence.html" class="btn-secondary">返回查詢系統</a>
@@ -61,6 +54,13 @@
 <footer class="sys-footer">
   <span>本系統僅供內部使用 · 存取紀錄將被留存</span>
 </footer>
+
+<script>
+document.getElementById("notebookMoreBtn").addEventListener("click", function () {
+  document.getElementById("notebookMore").style.display = "";
+  this.style.display = "none";
+});
+</script>
 
 <script src="js/site.js?v=18"></script>
 </body>

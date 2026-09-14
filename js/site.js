@@ -6,6 +6,12 @@ function getUnlockedMailIds() {
   if (localStorage.getItem("reply_sent") === "true") {
     ids.push("mail7");
   }
+  if (localStorage.getItem("ca_reply_choice")) {
+    ids.push("mail8");
+  }
+  if (localStorage.getItem("ca_identity_revealed") === "true") {
+    ids.push("mail9");
+  }
   return ids;
 }
 
@@ -68,6 +74,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const mail7Item = document.getElementById("mail7Item");
   if (mail7Item) {
     mail7Item.style.display = localStorage.getItem("reply_sent") === "true" ? "" : "none";
+  }
+
+  // mail8要等玩家選過問題之後才會出現
+  const mail8Item = document.getElementById("mail8Item");
+  if (mail8Item) {
+    mail8Item.style.display = localStorage.getItem("ca_reply_choice") ? "" : "none";
+  }
+
+  // mail9要等玩家猜對李承翰的名字之後才會出現
+  const mail9Item = document.getElementById("mail9Item");
+  if (mail9Item) {
+    mail9Item.style.display = localStorage.getItem("ca_identity_revealed") === "true" ? "" : "none";
   }
 
   // mmail3（第二封威脅信）要等mmail2被讀過才會出現

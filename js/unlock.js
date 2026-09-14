@@ -77,14 +77,14 @@ const CASE_DB = {
       { name: "郵件備份_0318.eml", locked: true, note: "分類層級：特殊（本帳號無法調閱）" }
     ]
   },
-  "TR15102019": {
+  "TR10092020": {
     access: true,
     title: "人事異動紀錄 · 羅美玉",
     items: [
       { name: "調職紀錄", link: "transfer-record.html" }
     ]
   },
-  "CA10102019": {
+  "CA20082020": {
     access: true,
     title: '<span class="redact-bar">███</span> · 相關檔案',
     items: [
@@ -216,7 +216,7 @@ function renderResult(container, code) {
     </div>`;
   addRecentQuery(code);
   renderRecentQueries();
-  if (code === "CA10102019") {
+  if (code === "CA20082020") {
     localStorage.setItem("viewed_ca", "true");
   }
 }
