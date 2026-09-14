@@ -44,6 +44,20 @@ const CASE_DB = {
       { name: "相驗紀錄", locked: true, unlockedDetail: "確認死因為自縊，惟頸部以外另有多處瘀傷，法醫於備註欄註記「建議進一步鑑定」，惟該建議未被採納。" }
     ]
   },
+  "DR02062021": {
+    access: true,
+    title: "死亡登記 · 林秉澤",
+    items: [
+      { name: "死亡登記基本資料", link: "dr-basic-info-29.html" }
+    ]
+  },
+  "DR09012024": {
+    access: true,
+    title: "死亡登記 · 林秉澤",
+    items: [
+      { name: "死亡登記基本資料", link: "dr-basic-info-81.html" }
+    ]
+  },
   "CR16082020": {
     access: true,
     title: "永豐機械工廠聚眾事件 · 案件紀錄",
