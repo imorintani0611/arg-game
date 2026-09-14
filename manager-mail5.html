@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>刑案管理系統 CMS-7 | 郵件</title>
-<link rel="stylesheet" href="css/style.css?v=10">
+<link rel="stylesheet" href="css/style.css?v=14">
 </head>
 <body data-mail-id="mmail5">
 
@@ -40,6 +40,15 @@
     <p>案件代碼：CA10102019</p>
   </div>
 
+  <section class="ca-reply-block" id="caReplyBlock" style="display:none">
+    <h2 class="reply-heading">回覆</h2>
+    <div class="question-options">
+      <button type="button" class="question-btn" id="askWhoBtn">你是誰</button>
+      <button type="button" class="question-btn" id="askPurposeBtn">你的目的是什麼</button>
+    </div>
+    <div id="caReplyThread"></div>
+  </section>
+
   <section class="action-block">
     <a href="inbox.html" class="btn-secondary">返回信箱</a>
   </section>
@@ -50,6 +59,7 @@
   <span>本系統僅供內部使用 · 存取紀錄將被留存</span>
 </footer>
 
-<script src="js/site.js?v=10"></script>
+<script src="js/ca-reply.js?v=14"></script>
+<script src="js/site.js?v=14"></script>
 </body>
 </html>

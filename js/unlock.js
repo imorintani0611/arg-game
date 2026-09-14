@@ -216,6 +216,9 @@ function renderResult(container, code) {
     </div>`;
   addRecentQuery(code);
   renderRecentQueries();
+  if (code === "CA10102019") {
+    localStorage.setItem("viewed_ca", "true");
+  }
 }
 
 // ===== 最近查詢紀錄 =====
