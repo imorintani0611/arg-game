@@ -121,7 +121,9 @@ const SEARCH_DB = {
   ]
 };
 
-// 搜酒駕、肇事逃逸相關關鍵字，找到2014年那起沒有下文的車禍const HITRUN_KEYWORDS = ["酒駕", "肇事逃逸", "肇逃", "中山區車禍", "2014 車禍", "2014車禍"];HITRUN_KEYWORDS.forEach(keyword => {
+// 搜酒駕、肇事逃逸相關關鍵字，找到2014年那起沒有下文的車禍
+const HITRUN_KEYWORDS = ["酒駕", "肇事逃逸", "肇逃", "中山區車禍", "2014 車禍", "2014車禍"];
+HITRUN_KEYWORDS.forEach(keyword => {
   SEARCH_DB[keyword] = [
     {
       url: "地方新聞網 › 社會版",
