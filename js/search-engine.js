@@ -74,6 +74,20 @@ const SEARCH_DB = {
   ]
 };
 
+// 這些關鍵字都會導向同一個匿名爆料論壇
+const HATE_POLICE_KEYWORDS = ["警察", "警察局", "台北市政府警察局", "台北警局", "警局", "員警"];
+HATE_POLICE_KEYWORDS.forEach(keyword => {
+  SEARCH_DB[keyword] = [
+    {
+      url: "黑特警察 · 匿名爆料論壇",
+      title: "黑特警察 - 匿名爆料論壇",
+      date: "封存於2019年11月",
+      snippet: "匿名爆料警界大小事，內容未經查證，本站已於2019年11月依主管機關要求停止留言功能……",
+      link: "hate-police.html"
+    }
+  ];
+});
+
 function seNormalize(input) {
   return input.trim();
 }

@@ -1,0 +1,171 @@
+/* ===== 黑特警察：爆料論壇風格 ===== */
+.hate-body {
+  margin: 0;
+  background: #F0F2F5;
+  color: #1C1E21;
+  font-family: -apple-system, "Noto Sans TC", "PingFang TC", sans-serif;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+.hate-header {
+  background: #1C1E21;
+  color: #fff;
+  padding: 14px 18px;
+}
+
+.hate-logo {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.hate-logo span {
+  color: #FF4444;
+}
+
+.hate-subtitle {
+  font-size: 11px;
+  color: #AAAAAA;
+  margin-top: 2px;
+}
+
+.hate-notice {
+  background: #FFF3CD;
+  color: #7A5B00;
+  font-size: 12.5px;
+  line-height: 1.7;
+  padding: 12px 16px;
+  margin: 12px;
+  border-radius: 6px;
+  border: 1px solid #FFE69C;
+}
+
+.hate-feed {
+  padding: 0 12px;
+}
+
+.hate-post {
+  background: #fff;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.hate-post-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.hate-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #E4E6EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.hate-author {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+.hate-time {
+  font-size: 11px;
+  color: #8A8D91;
+}
+
+.hate-post-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #1C1E21;
+}
+
+.hate-post-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hate-post-snippet {
+  font-size: 13.5px;
+  color: #444;
+  line-height: 1.6;
+  margin: 0 0 10px;
+}
+
+.hate-post-stats {
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  color: #8A8D91;
+  border-top: 1px solid #EEEEEE;
+  padding-top: 8px;
+}
+
+.hate-post.faint {
+  opacity: 0.7;
+}
+
+.hate-post.target {
+  border: 1px solid #FFCDD2;
+  background: #FFFBFB;
+}
+
+/* ===== 貼文詳情頁 ===== */
+.hate-article {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px;
+}
+
+.hate-comment-list {
+  margin: 12px;
+}
+
+.hate-comment {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+}
+
+.hate-comment-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.hate-comment-text {
+  font-size: 13.5px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.hate-comment.spam {
+  border-left: 3px solid #CCCCCC;
+}
+
+.hate-comment.spam .hate-comment-text {
+  color: #999;
+}
+
+.hate-back {
+  display: block;
+  margin: 16px 12px;
+  color: #4267B2;
+  font-size: 13px;
+  text-decoration: underline;
+}
