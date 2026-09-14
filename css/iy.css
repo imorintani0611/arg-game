@@ -1,0 +1,277 @@
+/* ===== IY：圖片社群平台 ===== */
+.iy-body {
+  margin: 0;
+  background: #FFFFFF;
+  color: #262626;
+  font-family: -apple-system, "Noto Sans TC", "PingFang TC", sans-serif;
+  font-size: 14px;
+  min-height: 100vh;
+}
+
+.iy-header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #DBDBDB;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.iy-logo {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: #262626;
+  text-decoration: none;
+}
+
+.iy-header-icons {
+  font-size: 17px;
+  color: #262626;
+  letter-spacing: 12px;
+}
+
+/* ===== 個人檔案 ===== */
+.iy-profile {
+  padding: 20px 16px 0;
+}
+
+.iy-profile-top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.iy-avatar {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid #DBDBDB;
+}
+
+.iy-stats {
+  display: flex;
+  gap: 22px;
+  flex: 1;
+  justify-content: space-around;
+}
+
+.iy-stat {
+  text-align: center;
+  font-size: 12.5px;
+  color: #262626;
+}
+
+.iy-stat strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.iy-bio {
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.iy-bio-name {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.iy-bio-text {
+  color: #262626;
+  white-space: pre-line;
+}
+
+.iy-memorial-note {
+  background: #FAFAFA;
+  border: 1px solid #EFEFEF;
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: #8E8E8E;
+  line-height: 1.7;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.iy-tabs {
+  display: flex;
+  border-top: 1px solid #DBDBDB;
+  margin-top: 4px;
+}
+
+.iy-tab {
+  flex: 1;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #8E8E8E;
+}
+
+.iy-tab.active {
+  color: #262626;
+  font-weight: 600;
+  border-top: 1px solid #262626;
+  margin-top: -1px;
+}
+
+/* ===== 九宮格 ===== */
+.iy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.iy-grid-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: block;
+  background: #EFEFEF;
+}
+
+.iy-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.iy-grid-item.pinned::after {
+  content: "📌";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 12px;
+}
+
+/* ===== 單則貼文 ===== */
+.iy-post-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+}
+
+.iy-post-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #DBDBDB;
+}
+
+.iy-post-user {
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.iy-post-img {
+  width: 100%;
+  display: block;
+}
+
+.iy-post-actions {
+  padding: 10px 16px 6px;
+  font-size: 20px;
+  letter-spacing: 12px;
+}
+
+.iy-post-likes {
+  padding: 0 16px 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.iy-caption {
+  padding: 0 16px 10px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.iy-caption-user {
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.iy-post-date {
+  padding: 0 16px 14px;
+  font-size: 11px;
+  color: #8E8E8E;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+.iy-comments {
+  padding: 14px 16px 30px;
+}
+
+.iy-comments-title {
+  font-size: 12.5px;
+  color: #8E8E8E;
+  margin-bottom: 14px;
+}
+
+.iy-comment {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.iy-comment-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: #C7C7C7;
+}
+
+.iy-comment-avatar.a { background: #B79A8E; }
+.iy-comment-avatar.b { background: #8EA3B7; }
+.iy-comment-avatar.c { background: #9FB78E; }
+.iy-comment-avatar.d { background: #B78EA8; }
+.iy-comment-avatar.e { background: #B7A98E; }
+
+.iy-comment-body { flex: 1; min-width: 0; }
+
+.iy-comment-text {
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0 0 4px;
+}
+
+.iy-comment-user {
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.iy-comment-meta {
+  font-size: 11.5px;
+  color: #8E8E8E;
+}
+
+.iy-footer {
+  text-align: center;
+  font-size: 11px;
+  color: #C7C7C7;
+  padding: 20px 16px 40px;
+  letter-spacing: 0.5px;
+}

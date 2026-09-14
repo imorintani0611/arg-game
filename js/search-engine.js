@@ -98,6 +98,13 @@ const SEARCH_DB = {
   ],
   "張哲瑋": [
     {
+      url: "IY › nelson_chang_",
+      title: "nelson_chang_ 的 IY 個人檔案",
+      date: "懷念帳號",
+      snippet: "📷 隨手拍 · ○大 資工二 · 騎車／咖啡／亂跑 — 此帳號已轉為懷念帳號，由家屬管理……",
+      link: "iy-nelson.html"
+    },
+    {
       url: "微光募款平台 › 公益專案",
       title: "為哲瑋點一盞燈｜微光募款",
       date: "2014年8月發起",
@@ -106,23 +113,21 @@ const SEARCH_DB = {
     },
     {
       url: "地方新聞網 › 社會版",
-      title: "中山區深夜車禍 機車騎士不治 肇事車輛逃逸",
+      title: "中山區深夜車禍 大學生騎士不治 肇事車輛逃逸",
       date: "2014年6月18日",
-      snippet: "臺北市中山區今日凌晨發生一起車禍，一名機車騎士遭不明車輛撞擊後倒地，送醫後宣告不治……",
+      snippet: "臺北市中山區今日凌晨發生一起死亡車禍，一名大學生騎乘機車返家途中遭後方車輛撞擊倒地，送醫後宣告不治……",
       link: "news-hitrun-2014.html"
     }
   ]
 };
 
-// 搜酒駕、肇事逃逸相關關鍵字，找到2014年那起沒有下文的車禍
-const HITRUN_KEYWORDS = ["酒駕", "肇事逃逸", "肇逃", "中山區車禍", "2014 車禍", "2014車禍"];
-HITRUN_KEYWORDS.forEach(keyword => {
+// 搜酒駕、肇事逃逸相關關鍵字，找到2014年那起沒有下文的車禍const HITRUN_KEYWORDS = ["酒駕", "肇事逃逸", "肇逃", "中山區車禍", "2014 車禍", "2014車禍"];HITRUN_KEYWORDS.forEach(keyword => {
   SEARCH_DB[keyword] = [
     {
       url: "地方新聞網 › 社會版",
-      title: "中山區深夜車禍 機車騎士不治 肇事車輛逃逸",
+      title: "中山區深夜車禍 大學生騎士不治 肇事車輛逃逸",
       date: "2014年6月18日",
-      snippet: "臺北市中山區今日凌晨發生一起車禍，一名機車騎士遭不明車輛撞擊後倒地，送醫後宣告不治，肇事車輛逃逸……",
+      snippet: "臺北市中山區今日凌晨發生一起死亡車禍，一名大學生騎乘機車返家途中遭後方車輛撞擊倒地，肇事車輛未停留即駛離……",
       link: "news-hitrun-2014.html"
     },
     {
@@ -227,4 +232,9 @@ document.addEventListener("DOMContentLoaded", () => {
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") btn.click();
   });
+});
+
+// 搜英文名字也能找到同一個人的IY
+["Nelson", "nelson", "nelson_chang_", "NELSON"].forEach(k => {
+  SEARCH_DB[k] = SEARCH_DB["張哲瑋"];
 });
