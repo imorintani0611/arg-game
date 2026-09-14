@@ -69,6 +69,18 @@ const CASE_DB = {
     items: [
       { name: "調職紀錄", link: "transfer-record.html" }
     ]
+  },
+  "CA10102019": {
+    access: true,
+    title: "李承翰 · 相關檔案",
+    items: [
+      { name: "全家福.jpg", link: "ca-family-photo.html" },
+      { name: "驗屍報告.pdf", locked: true },
+      { name: "廠房週間紀錄.xlsx", locked: true },
+      { name: "交易清單.xlsx", locked: true },
+      { name: "監控錄影備份.mp4", locked: true },
+      { name: "人員調度表.docx", locked: true }
+    ]
   }
 };
 
