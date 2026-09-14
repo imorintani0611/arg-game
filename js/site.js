@@ -6,7 +6,7 @@ function getUnlockedMailIds() {
   if (localStorage.getItem("reply_sent") === "true") {
     ids.push("mail7");
   }
-  if (localStorage.getItem("ca_reply_choice")) {
+  if (localStorage.getItem("ca_reply_choice") === "purpose") {
     ids.push("mail8");
   }
   if (localStorage.getItem("ca_identity_revealed") === "true") {
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // mail8要等玩家選過問題之後才會出現
   const mail8Item = document.getElementById("mail8Item");
   if (mail8Item) {
-    mail8Item.style.display = localStorage.getItem("ca_reply_choice") ? "" : "none";
+    mail8Item.style.display = localStorage.getItem("ca_reply_choice") === "purpose" ? "" : "none";
   }
 
   // mail9要等玩家猜對李承翰的名字之後才會出現

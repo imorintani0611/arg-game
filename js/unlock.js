@@ -84,6 +84,46 @@ const CASE_DB = {
       { name: "調職紀錄", link: "transfer-record.html" }
     ]
   },
+  "TA18062014": {
+    access: true,
+    title: "交通事故處理紀錄",
+    items: [
+      { name: "攔檢紀錄", link: "shen-dui.html" }
+    ]
+  },
+  "CR18062014": {
+    access: true,
+    title: "竊盜案 · 機車零件竊盜",
+    items: [
+      { name: "竊盜案處理紀錄", link: "decoy-cr2014.html" },
+      { name: "現場照片", locked: true },
+      { name: "監視器畫面調閱申請", locked: true }
+    ]
+  },
+  "DR18062014": {
+    access: true,
+    title: "死亡登記 · 陳○○",
+    items: [
+      { name: "死亡登記基本資料", link: "decoy-dr2014.html" },
+      { name: "相驗紀錄", locked: true }
+    ]
+  },
+  "SA18062014": {
+    access: false,
+    title: "可疑死亡通報（已併案）"
+  },
+  "MP18062014": {
+    access: false,
+    title: "失蹤人口通報（已尋獲）"
+  },
+  "TR18062014": {
+    access: true,
+    title: "人事異動紀錄",
+    items: [
+      { name: "異動清冊", locked: true },
+      { name: "核定函", locked: true }
+    ]
+  },
   "TR04092020": {
     access: true,
     title: "人事異動令 · 劉育豪",
