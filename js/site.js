@@ -12,6 +12,19 @@ function getUnlockedMailIds() {
   if (localStorage.getItem("ca_identity_revealed") === "true") {
     ids.push("mail9");
   }
+  if (localStorage.getItem("viewed_liu_history") === "true") {
+    ids.push("mail10");
+  }
+  const liuOutcome = localStorage.getItem("liu_reply_outcome");
+  if (liuOutcome === "1B") {
+    ids.push("mail11");
+  }
+  if (liuOutcome === "2A") {
+    ids.push("mail12");
+  }
+  if (liuOutcome === "2B") {
+    ids.push("mail13");
+  }
   return ids;
 }
 
@@ -87,6 +100,21 @@ document.addEventListener("DOMContentLoaded", () => {
   if (mail9Item) {
     mail9Item.style.display = localStorage.getItem("ca_identity_revealed") === "true" ? "" : "none";
   }
+
+  // mail10（劉育豪的勸告信）要等玩家看過他的人事異動歷程才會出現
+  const mail10Item = document.getElementById("mail10Item");
+  if (mail10Item) {
+    mail10Item.style.display = localStorage.getItem("viewed_liu_history") === "true" ? "" : "none";
+  }
+
+  // mail11/12/13：依照劉育豪回信的分支結果決定要顯示哪一封
+  const liuOutcome = localStorage.getItem("liu_reply_outcome");
+  const mail11Item = document.getElementById("mail11Item");
+  if (mail11Item) mail11Item.style.display = liuOutcome === "1B" ? "" : "none";
+  const mail12Item = document.getElementById("mail12Item");
+  if (mail12Item) mail12Item.style.display = liuOutcome === "2A" ? "" : "none";
+  const mail13Item = document.getElementById("mail13Item");
+  if (mail13Item) mail13Item.style.display = liuOutcome === "2B" ? "" : "none";
 
   // mmail3（第二封威脅信）要等mmail2被讀過才會出現
   const mmail3Item = document.getElementById("mmail3Item");

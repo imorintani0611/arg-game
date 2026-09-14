@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>刑案管理系統 CMS-7 | 逐字筆錄</title>
+<title>刑案管理系統 CMS-7 | 人事派令</title>
 <link rel="stylesheet" href="css/style.css?v=21">
 </head>
 <body>
@@ -17,7 +17,7 @@
   </a>
   <nav class="sys-nav">
     <a href="personnel.html" class="nav-icon" aria-label="人員查詢">🪪</a>
-    <a href="evidence.html" class="nav-icon" aria-label="證據系統">📁</a>
+    <a href="evidence.html" class="nav-icon active" aria-label="證據系統">📁</a>
     <a href="inbox.html" class="nav-icon mail-entry" aria-label="信箱">
       <span class="mail-icon">✉</span>
       <span class="mail-badge">1</span>
@@ -28,22 +28,22 @@
 <main class="doc-page">
 
   <div class="doc-meta">
-    <span>2020年8月16日</span>
-    <span>文件類型 逐字筆錄（私人筆記本）</span>
+    <span>案件代號 TR15092020</span>
+    <span>文件類型 人事派令</span>
   </div>
 
-  <h1 class="doc-title">逐字筆錄</h1>
-  <p class="doc-sub">員工 藍文祥</p>
+  <h1 class="doc-title">人事派令</h1>
+  <p class="doc-sub">臺北市政府警察局中山分局</p>
 
   <section class="report-section">
-    <img src="images/notebook_left.jpg" alt="逐字筆錄左頁" style="width:100%; border:1px solid var(--line); display:block;">
+    <table class="report-table">
+      <tr><td>姓名</td><td>劉育豪</td></tr>
+      <tr><td>警員編號</td><td>7734</td></tr>
+      <tr><td>原職務</td><td>臺北市政府警察局中山分局 警員</td></tr>
+      <tr><td>派任職務</td><td>臺北市政府警察局中山分局 分局長</td></tr>
+      <tr><td>派令日期</td><td>2020年9月15日</td></tr>
+    </table>
   </section>
-
-  <section class="report-section" id="notebookMore" style="display:none">
-    <img src="images/notebook_right.jpg" alt="逐字筆錄右頁" style="width:100%; border:1px solid var(--line); display:block;">
-  </section>
-
-  <button type="button" id="notebookMoreBtn" class="btn-secondary" style="width:100%; box-sizing:border-box;">顯示更多</button>
 
   <section class="action-block">
     <a href="evidence.html" class="btn-secondary">返回查詢系統</a>
@@ -54,13 +54,6 @@
 <footer class="sys-footer">
   <span>本系統僅供內部使用 · 存取紀錄將被留存</span>
 </footer>
-
-<script>
-document.getElementById("notebookMoreBtn").addEventListener("click", function () {
-  document.getElementById("notebookMore").style.display = "";
-  this.style.display = "none";
-});
-</script>
 
 <script src="js/site.js?v=21"></script>
 </body>

@@ -84,6 +84,20 @@ const CASE_DB = {
       { name: "調職紀錄", link: "transfer-record.html" }
     ]
   },
+  "TR04092020": {
+    access: true,
+    title: "人事異動令 · 劉育豪",
+    items: [
+      { name: "人事異動令", link: "liu-transfer-order.html" }
+    ]
+  },
+  "TR15092020": {
+    access: true,
+    title: "人事派令 · 劉育豪",
+    items: [
+      { name: "人事派令", link: "liu-promotion.html" }
+    ]
+  },
   "CA20082020": {
     access: true,
     title: '<span class="redact-bar">███</span> · 相關檔案',

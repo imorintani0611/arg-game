@@ -61,6 +61,14 @@ const SEARCH_DB = {
       date: "112年度",
       snippet: "劉育豪，現職臺北市政府警察局中山分局分局長，服務警界多年，工作表現優異，深獲同仁及地方肯定……",
       link: "commendation-liu.html"
+    },
+    {
+      url: "地方新聞網 › 社會版",
+      title: "分局長獨生女不幸墜樓 警方初步排除他殺",
+      date: "最近",
+      snippet: "臺北市中山分局分局長劉育豪之女，日前於住家陽台不慎墜樓，送醫後宣告不治，警方初步排除他殺可能……",
+      link: "news-liu-daughter.html",
+      requiresDaughterNews: true
     }
   ],
   "林曉雨": [
@@ -81,8 +89,8 @@ HATE_POLICE_KEYWORDS.forEach(keyword => {
     {
       url: "黑特警察 · 匿名爆料論壇",
       title: "黑特警察 - 匿名爆料論壇",
-      date: "封存於2019年11月",
-      snippet: "匿名爆料警界大小事，內容未經查證，本站已於2019年11月依主管機關要求停止留言功能……",
+      date: "封存於2020年9月",
+      snippet: "匿名爆料警界大小事，內容未經查證，本站已於2020年9月依主管機關要求停止留言功能……",
       link: "hate-police.html"
     }
   ];
@@ -94,9 +102,17 @@ function seNormalize(input) {
 
 function seRenderResult(container, query) {
   const key = seNormalize(query);
-  const results = SEARCH_DB[key];
+  let results = SEARCH_DB[key];
 
   if (!results || results.length === 0) {
+    container.innerHTML = `<p class="se-empty">沒有找到與「${key}」相關的結果。</p>`;
+    return;
+  }
+
+  // 劉育豪女兒的新聞要等劇情觸發之後才會出現
+  results = results.filter(r => !r.requiresDaughterNews || localStorage.getItem("daughter_news_available") === "true");
+
+  if (results.length === 0) {
     container.innerHTML = `<p class="se-empty">沒有找到與「${key}」相關的結果。</p>`;
     return;
   }

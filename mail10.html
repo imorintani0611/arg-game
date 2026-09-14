@@ -6,7 +6,7 @@
 <title>刑案管理系統 CMS-7 | 郵件</title>
 <link rel="stylesheet" href="css/style.css?v=21">
 </head>
-<body data-mail-id="mmail3">
+<body data-mail-id="mail10">
 
 <div class="scanline"></div>
 
@@ -28,15 +28,37 @@
 <main class="doc-page">
 
   <div class="mail-detail-meta">
-    <span class="mail-detail-from">（寄件人不明）</span>
+    <span class="mail-detail-from">劉育豪</span>
     <span class="mail-detail-time">剛剛</span>
   </div>
 
   <h1 class="doc-title mail-detail-subject">（無主旨）</h1>
 
   <div class="letter">
-    <p>我們現在很缺糖果，我不介意從你那邊拿。</p>
+    <p>還來得及逃跑的時候逃跑，不要做這些不屬於你位置的事情。</p>
+    <p>如果你有興趣的話，我可以在其他區幫你排一個警長的職位。</p>
+    <p>把你看到的都忘了吧，拜託了。</p>
   </div>
+
+  <section class="ca-reply-block">
+    <h2 class="reply-heading">回覆</h2>
+
+    <div class="reply-template">
+      <span>我看過</span>
+      <input type="text" id="liuCode1" class="reply-input" autocomplete="off">
+      <span>了。我會繼續查下去。</span>
+    </div>
+    <button id="liuBtn1" class="btn-primary" style="width:100%">送出</button>
+    <p id="liuResult1" class="reply-status"></p>
+
+    <div class="reply-template" style="margin-top:20px;">
+      <span>我看過</span>
+      <input type="text" id="liuCode2" class="reply-input" autocomplete="off">
+      <span>了。我會退出的。</span>
+    </div>
+    <button id="liuBtn2" class="btn-primary" style="width:100%">送出</button>
+    <p id="liuResult2" class="reply-status"></p>
+  </section>
 
   <section class="action-block">
     <a href="inbox.html" class="btn-secondary">返回信箱</a>
@@ -48,6 +70,7 @@
   <span>本系統僅供內部使用 · 存取紀錄將被留存</span>
 </footer>
 
+<script src="js/liu-reply.js?v=21"></script>
 <script src="js/site.js?v=21"></script>
 </body>
 </html>
