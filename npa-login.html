@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPA-SEC | 警政署機密通訊系統</title>
+<link rel="stylesheet" href="css/npa.css?v=28">
+</head>
+<body class="npa-body">
+
+<div class="npa-classified">VERY CONFIDENTIAL · RESTRICTED ACCESS</div>
+
+<header class="npa-header">
+  <img src="images/npa_seal.jpg" alt="" class="npa-header-seal">
+  <div>
+    <div class="npa-header-title">警政署機密通訊系統</div>
+    <div class="npa-header-sub">NPA-SEC · OFFICIAL USE ONLY</div>
+  </div>
+</header>
+
+<main class="npa-login-wrap">
+  <img src="images/npa_seal.jpg" alt="" class="npa-seal-big">
+  <h1 class="npa-login-title">身分驗證</h1>
+  <p class="npa-login-sub">AUTHORIZED PERSONNEL ONLY</p>
+
+  <form class="npa-form" id="npaForm" onsubmit="return false;">
+    <label class="npa-label" for="npaId">識別證號</label>
+    <input type="text" id="npaId" class="npa-input" autocomplete="off">
+    <label class="npa-label" for="npaPw">密碼</label>
+    <input type="password" id="npaPw" class="npa-input" autocomplete="off">
+    <button type="button" id="npaBtn" class="npa-btn">登入</button>
+    <p class="npa-error" id="npaError"></p>
+  </form>
+
+  <p class="npa-warning">
+    本系統僅限經授權人員使用。<br>
+    所有存取行為均受監控與記錄。<br>
+    未經授權之存取將依法追訴。
+  </p>
+</main>
+
+<script src="js/npa.js?v=28"></script>
+</body>
+</html>
