@@ -134,3 +134,71 @@
   color: #BBBBBB;
   text-align: center;
 }
+
+/* ===== 留言區 ===== */
+.blog-comments {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid #EEEEEE;
+}
+
+.comments-heading {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: #1A1A1A;
+}
+
+.comment-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #DDE8E2;
+  color: #2E9B6B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.comment-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-top {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.comment-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.comment-time {
+  font-size: 11px;
+  color: #AAAAAA;
+}
+
+.comment-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #333333;
+}
+
+.comment-item.op .comment-avatar {
+  background: #2E9B6B;
+  color: #fff;
+}
