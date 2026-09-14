@@ -82,6 +82,13 @@ const SEARCH_DB = {
   ],
   "沈國樑": [
     {
+      url: "Penguin › 搜尋結果",
+      title: "沈國樑 - Penguin 搜尋結果",
+      date: "2年前",
+      snippet: "新任警政署長沈國樑今日正式就職，致詞以「任重道遠」為題，強調將持續推動基層警力改革與治安維護……",
+      link: "penguin-shen.html"
+    },
+    {
       url: "知識家 › 育兒 › 命名",
       title: "如果把小孩取名叫國樑怎麼樣？",
       date: "9年前",
