@@ -23,11 +23,24 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (account === "9021" || account === "7734") {
+    if (account === "9021") {
       localStorage.setItem("current_account", account);
       window.location.href = "index.html";
       return;
     }
+
+    // 7734是劉育豪的帳號，玩家角色本來就不該知道密碼——
+    // 沒有先透過「忘記密碼」解出他女兒的生日拿到manager_access，這裡永遠失敗
+    if (account === "7734") {
+      if (localStorage.getItem("manager_access") === "true") {
+        localStorage.setItem("current_account", account);
+        window.location.href = "index.html";
+        return;
+      }
+      msg.textContent = "帳號或密碼錯誤，請確認後再試一次。";
+      return;
+    }
+
     msg.textContent = "帳號或密碼錯誤，請確認後再試一次。";
   });
 
