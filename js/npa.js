@@ -6,12 +6,14 @@ const NPA_ID = "3302";
 const NPA_PW = "18062014";
 
 // ===== 與旺卡的聊天記錄 =====
+// recalled:true 代表「對方已收回訊息」，不顯示內容——暗示還有更多案件或烤箱地點被刻意刪掉
 const WONKA_CHAT = [
   { from: "wonka", date: "2019/10/30", text: ["永豐那邊的平底鍋需要清一下。", "你那邊有個新人不太聽話。"] },
   { from: "shen",  date: "2019/11/01", text: ["從現在開始他會聽話的。"] },
   { from: "shen",  date: "2019/11/03", text: ["拿到的不是糖果是老鼠，已處理。"] },
   { from: "wonka", date: "2019/11/03", text: ["多注意一點，平底鍋可以保留嗎？"] },
   { from: "shen",  date: "2019/11/03", text: ["是。我會找看看新的料理人。"] },
+  { from: "wonka", date: "2020/03/12", recalled: true },
   { from: "shen",  date: "2020/08/14", text: ["料理人退休了。從我底下找一個應該會比較快。"] },
   { from: "wonka", date: "2020/08/18", text: ["老鼠太囂張了，處理掉。"] },
   { from: "shen",  date: "2020/08/18", text: ["是。"] },
@@ -21,12 +23,17 @@ const WONKA_CHAT = [
   { from: "wonka", date: "2020/09/04", text: ["有合適的料理人了嗎？"] },
   { from: "shen",  date: "2020/09/04", text: ["7734"] },
   { from: "wonka", date: "2020/09/04", text: ["好"] },
-  { from: "wonka", date: "2022/12/15", text: ["這隻老鼠處理得太乾淨了，反而有人開始問。", "以後這種事先跟我說一聲再動手。"] },
-  { from: "shen",  date: "2022/12/15", text: ["知道了。"] },
+  { from: "wonka", date: "2021/06/30", recalled: true },
+  { from: "wonka", date: "2023/02/14", recalled: true },
   { from: "wonka", date: "2024/01/24", text: ["這筆麵粉記得走現金，不要留單。"] },
   { from: "shen",  date: "2024/01/24", text: ["好。"] },
   { from: "wonka", date: "2024/02/12", text: ["那邊烤箱這個月排滿了，客人都很滿意。", "舊鍋子的東西這週會搬完，麻煩幫忙看一下附近有沒有人在問。"] },
-  { from: "shen",  date: "2024/02/12", text: ["我會注意。"] }
+  { from: "shen",  date: "2024/02/12", text: ["我會注意。"] },
+  { from: "wonka", date: "2024/06/03", recalled: true },
+  { from: "wonka", date: "2024/09/24", text: ["這隻老鼠處理得太乾淨了，反而有人開始問。", "以後這種事先跟我說一聲再動手。"] },
+  { from: "shen",  date: "2024/09/24", text: ["知道了。"] },
+  { from: "wonka", date: "2024/11/20", recalled: true },
+  { from: "wonka", date: "今天", text: ["烤箱在中山北路七段45號，明天同樣時間。"] }
 ];
 
 // ===== 機密檔案留存：最近三個案件 =====
@@ -54,7 +61,7 @@ const NPA_CASES = [
     ]
   },
   {
-    code: "TA30112022",
+    code: "TA10092024",
     title: "黃啟明 車禍身亡案",
     summary: "分局警員，疑似發現轄區內異常失蹤案模式，私下向上呈報，一個月後車禍身亡，結案為單純自撞。",
     attachmentLabel: "簽結備注",
@@ -113,12 +120,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 聯絡人清單：目前只有旺卡，其餘之後再加
     const lastMsg = WONKA_CHAT[WONKA_CHAT.length - 1];
+    const lastPreview = lastMsg.recalled ? "對方已收回訊息" : lastMsg.text[0];
     contactList.innerHTML = `
       <a href="npa-chat-wonka.html" class="npa-contact wonka">
         <div class="npa-contact-avatar">?</div>
         <div class="npa-contact-body">
           <div class="npa-contact-name">旺卡</div>
-          <div class="npa-contact-preview">${lastMsg.text[0]}</div>
+          <div class="npa-contact-preview">${lastPreview}</div>
         </div>
       </a>
       <p class="npa-contact-note">僅顯示近期有往來紀錄的聯絡人。</p>
@@ -176,6 +184,13 @@ document.addEventListener("DOMContentLoaded", () => {
         dateHtml = `<div class="npa-chat-date">${m.date}</div>`;
         lastDate = m.date;
       }
+      if (m.recalled) {
+        return dateHtml + `
+          <div class="npa-chat-row ${m.from}">
+            <div class="npa-chat-bubble npa-chat-recalled">對方已收回訊息</div>
+          </div>
+        `;
+      }
       const bubbles = m.text.map(t => `
         <div class="npa-chat-row ${m.from}">
           <div class="npa-chat-bubble">${t}</div>
@@ -184,6 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return dateHtml + bubbles;
     }).join("");
 
+    localStorage.setItem("viewed_wonka_chat", "true");
     window.scrollTo(0, document.body.scrollHeight);
   }
 });

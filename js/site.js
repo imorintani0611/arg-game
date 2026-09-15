@@ -54,6 +54,9 @@ function getManagerMailIds() {
   if (isMailRead("mmail2")) {
     ids.push("mmail3");
   }
+  if (localStorage.getItem("viewed_wonka_chat") === "true") {
+    ids.push("mmail6");
+  }
   return ids;
 }
 
@@ -133,6 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const mmail3Item = document.getElementById("mmail3Item");
   if (mmail3Item) {
     mmail3Item.style.display = isMailRead("mmail2") ? "" : "none";
+  }
+
+  // mmail6（廉政署駁回信）要等玩家看過旺卡的聊天記錄才會出現
+  const mmail6Item = document.getElementById("mmail6Item");
+  if (mmail6Item) {
+    mmail6Item.style.display = localStorage.getItem("viewed_wonka_chat") === "true" ? "" : "none";
   }
 
   // 取得主管權限跟顯示的身分是兩件事：

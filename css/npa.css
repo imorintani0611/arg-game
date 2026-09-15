@@ -432,3 +432,10 @@
   background: var(--npa-red-soft);
   color: #F5D6D3;
 }
+
+.npa-chat-bubble.npa-chat-recalled {
+  font-style: italic;
+  color: var(--npa-muted);
+  background: transparent;
+  border: 1px dashed var(--npa-line);
+}
