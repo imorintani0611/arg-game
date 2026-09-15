@@ -241,6 +241,11 @@ document.addEventListener("DOMContentLoaded", () => {
   SEARCH_DB[k] = SEARCH_DB["張哲瑋"];
 });
 
+// 永豐機械工廠的常見簡稱也要能搜到同一組結果，不用打全名
+["永豐工廠", "永豐機械", "永豐"].forEach(k => {
+  SEARCH_DB[k] = SEARCH_DB["永豐機械工廠"];
+});
+
 // 沈國樑的英文名字，搜這個才找得到他的Nosebook帳號（搜「沈國樑」本身找不到）
 ["Henry", "henry", "HENRY", "Henry Shen"].forEach(k => {
   SEARCH_DB[k] = [
