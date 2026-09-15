@@ -88,7 +88,7 @@ const CASE_DB = {
     access: true,
     title: "交通事故處理紀錄",
     items: [
-      { name: "攔檢紀錄", link: "shen-dui.html" }
+      { name: "攔檢紀錄", locked: true, link: "shen-dui.html" }
     ]
   },
   "CR18062014": {

@@ -151,9 +151,9 @@ DATE_DECOY_KEYWORDS.forEach(keyword => {
   SEARCH_DB[keyword] = [
     {
       url: "地方新聞網 › 財經版",
-      title: "大樂透今晚開獎 頭獎上看兩億",
+      title: "大樂透今晚開獎 頭獎上看8億",
       date: "2014年6月18日",
-      snippet: "本期大樂透連續槓龜，累積頭獎獎金上看兩億元，各地彩券行湧現購買人潮，本期開獎號碼為……",
+      snippet: "本期大樂透連續槓龜，累積頭獎獎金上看8億元，各地彩券行湧現購買人潮，本期開獎號碼為……",
       link: "decoy-lottery.html"
     },
     {

@@ -53,7 +53,7 @@ function su2Unlocked() {
 }
 
 function su2Normalize(text) {
-  return text.trim();
+  return text.trim().toUpperCase().replace(/[\s-]/g, "");
 }
 
 function dmAddBubble(thread, cls, html) {
