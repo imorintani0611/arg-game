@@ -240,3 +240,16 @@ document.addEventListener("DOMContentLoaded", () => {
 ["Nelson", "nelson", "nelson_chang_", "NELSON"].forEach(k => {
   SEARCH_DB[k] = SEARCH_DB["張哲瑋"];
 });
+
+// 沈國樑的英文名字，搜這個才找得到他的Nosebook帳號（搜「沈國樑」本身找不到）
+["Henry", "henry", "HENRY", "Henry Shen"].forEach(k => {
+  SEARCH_DB[k] = [
+    {
+      url: "Nosebook",
+      title: "Henry Shen",
+      date: "社群媒體 · 個人檔案",
+      snippet: "分享生活點滴、家庭與朋友聚會的近況……",
+      link: "nosebook.html"
+    }
+  ];
+});

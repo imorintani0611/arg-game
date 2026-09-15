@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henry Shen - Nosebook</title>
+<link rel="stylesheet" href="css/nosebook.css?v=31">
+</head>
+<body class="nb-body">
+
+<header class="nb-topbar">
+  <span class="nb-logo">Nosebook</span>
+  <div class="nb-topbar-icons">🔍💬🔔</div>
+</header>
+
+<div class="nb-cover-wrap">
+  <img src="images/henry_photo_group.jpg" alt="封面相片" class="nb-cover">
+  <div class="nb-profile-row">
+    <img src="images/shen_inauguration.jpg" alt="大頭貼" class="nb-avatar">
+    <div class="nb-name-block">
+      <h1 class="nb-name">Henry Shen <span class="nb-name-zh">(沈國樑)</span></h1>
+      <p class="nb-friends">1,204 位朋友</p>
+    </div>
+  </div>
+</div>
+<p class="nb-cover-caption">📷 更新了封面相片。<span class="nb-cover-text">與幾位老朋友餐敘，感謝款待🙏🙏</span></p>
+
+<div class="nb-layout">
+
+  <aside class="nb-sidebar">
+    <div class="nb-info-card">
+      <h3>個人檔案</h3>
+      <p>🎓 國立○○大學 法律系</p>
+      <p>🏠 住在 臺北市</p>
+      <p>💼 服務於 警政署</p>
+      <p>❤️ 已離婚</p>
+      <p>🎂 1968年3月14日</p>
+    </div>
+    <div class="nb-info-card nb-ad">
+      <h3>贊助</h3>
+      <p>👴 銀髮族保健食品 限時優惠中！</p>
+    </div>
+  </aside>
+
+  <main class="nb-feed">
+
+    <div class="nb-sort-bar">
+      <span>貼文</span>
+      <button id="nbSortToggle" class="nb-sort-toggle">排序方式：最相關 ▾</button>
+    </div>
+
+    <!-- 貼文一：新車炫耀文（誤導用，預設可見） -->
+    <article class="nb-post">
+      <div class="nb-post-head">
+        <img src="images/shen_inauguration.jpg" class="nb-post-avatar" alt="">
+        <div>
+          <p class="nb-post-name">Henry Shen</p>
+          <p class="nb-post-time">3月17日 · 🌐</p>
+        </div>
+      </div>
+      <p class="nb-post-text">終於交車啦！！開了快20年的老車換新車的感覺真好😍😍 感謝老朋友介紹的優惠🚗✨</p>
+      <img src="images/henry_car.jpg" class="nb-post-photo" alt="新車照片">
+      <div class="nb-post-stats">👍❤️😮 62</div>
+      <div class="nb-post-actions"><span>👍 讚</span><span>💬 留言</span><span>↗ 分享</span></div>
+      <div class="nb-comments">
+        <div class="nb-comment"><span class="nb-comment-name">陳素娥</span>恭喜恭喜🎉開新車要請客喔</div>
+        <div class="nb-comment"><span class="nb-comment-name">老王</span>低調一點啦哈哈</div>
+      </div>
+    </article>
+
+    <!-- 貼文二：填充雜訊貼文 -->
+    <article class="nb-post">
+      <div class="nb-post-head">
+        <img src="images/shen_inauguration.jpg" class="nb-post-avatar" alt="">
+        <div>
+          <p class="nb-post-name">Henry Shen</p>
+          <p class="nb-post-time">2月2日 · 🌐</p>
+        </div>
+      </div>
+      <p class="nb-post-text">早安 🌞 心存善念，凡事感恩。（分享自：正能量語錄）</p>
+      <div class="nb-post-stats">👍 18</div>
+      <div class="nb-post-actions"><span>👍 讚</span><span>💬 留言</span><span>↗ 分享</span></div>
+    </article>
+
+    <!-- 貼文三（隱藏）：關鍵貼文，切換排序後才會出現 -->
+    <article class="nb-post nb-post-hidden" id="nbHiddenPost">
+      <div class="nb-post-head">
+        <img src="images/shen_inauguration.jpg" class="nb-post-avatar" alt="">
+        <div>
+          <p class="nb-post-name">Henry Shen</p>
+          <p class="nb-post-time">1月9日 · 🌐</p>
+        </div>
+      </div>
+      <p class="nb-post-text">謝謝大哥請客🙏 每次都吃得這麼豐盛真的太不好意思了</p>
+      <img src="images/henry_dinner.jpg" class="nb-post-photo" alt="餐敘照片">
+      <div class="nb-post-stats">👍❤️ 9</div>
+      <div class="nb-post-actions"><span>👍 讚</span><span>💬 留言</span><span>↗ 分享</span></div>
+      <div class="nb-comments">
+        <div class="nb-comment"><span class="nb-comment-name">陳素娥</span>看起來好高級喔</div>
+        <div class="nb-comment nb-comment-deleted"><span class="nb-comment-name">已刪除的帳號</span>改天我帶Jerry一起，他也想見蘇大嫂了</div>
+        <div class="nb-comment"><span class="nb-comment-name">老王</span>下次記得揪我😂</div>
+      </div>
+    </article>
+
+  </main>
+</div>
+
+<script src="js/nosebook.js?v=31"></script>
+</body>
+</html>

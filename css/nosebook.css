@@ -1,0 +1,281 @@
+/* ===== Nosebook：老派雜亂社群平台風格 ===== */
+.nb-body {
+  margin: 0;
+  background: #e9ebee;
+  color: #1d2129;
+  font-family: Arial, "Noto Sans TC", "PingFang TC", sans-serif;
+  font-size: 14px;
+  min-height: 100vh;
+}
+
+.nb-topbar {
+  background: #3b5998;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+}
+
+.nb-logo {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.nb-topbar-icons {
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 8px;
+}
+
+.nb-cover-wrap {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.nb-cover {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  border-bottom: 1px solid #ccd0d5;
+}
+
+.nb-profile-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 0 16px;
+  margin-top: -45px;
+}
+
+.nb-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  object-fit: cover;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.nb-name-block {
+  padding-bottom: 6px;
+}
+
+.nb-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: #1d2129;
+}
+
+.nb-name-zh {
+  font-weight: 400;
+  font-size: 15px;
+  color: #606770;
+}
+
+.nb-friends {
+  font-size: 12px;
+  color: #606770;
+  margin: 2px 0 0;
+}
+
+.nb-cover-caption {
+  max-width: 640px;
+  margin: 6px auto 0;
+  padding: 0 16px 10px;
+  font-size: 13px;
+  color: #606770;
+  border-bottom: 8px solid #e9ebee;
+}
+
+.nb-cover-text {
+  font-family: Georgia, serif;
+  color: #1d2129;
+}
+
+.nb-layout {
+  max-width: 640px;
+  margin: 10px auto;
+  display: flex;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.nb-sidebar {
+  width: 180px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nb-info-card {
+  background: #fff;
+  border: 1px solid #dddfe2;
+  border-radius: 3px;
+  padding: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.nb-info-card h3 {
+  font-size: 13px;
+  margin: 0 0 6px;
+  color: #3b5998;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+
+.nb-info-card p {
+  font-size: 12px;
+  margin: 5px 0;
+  font-family: Georgia, serif;
+}
+
+.nb-ad {
+  background: #fffde7;
+  border-color: #f0d878;
+}
+
+.nb-feed {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nb-sort-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 2px;
+}
+
+.nb-sort-bar > span {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.nb-sort-toggle {
+  background: none;
+  border: none;
+  font-size: 11px;
+  color: #90949c;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.nb-sort-toggle:hover {
+  text-decoration: underline;
+}
+
+.nb-post {
+  background: #fff;
+  border: 1px solid #dddfe2;
+  border-radius: 3px;
+  padding: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.nb-post-hidden {
+  display: none;
+}
+
+.nb-post-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.nb-post-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nb-post-name {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+  color: #1d2129;
+}
+
+.nb-post-time {
+  font-size: 11px;
+  color: #90949c;
+  margin: 0;
+}
+
+.nb-post-text {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+
+.nb-post-photo {
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+
+.nb-post-stats {
+  font-size: 12px;
+  color: #90949c;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.nb-post-actions {
+  display: flex;
+  gap: 14px;
+  padding-top: 6px;
+  font-size: 12px;
+  color: #606770;
+  font-weight: 700;
+}
+
+.nb-comments {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nb-comment {
+  font-size: 12.5px;
+  background: #f0f2f5;
+  border-radius: 12px;
+  padding: 5px 10px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.nb-comment-name {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.nb-comment-deleted {
+  background: #f0f2f5;
+  color: #90949c;
+}
+
+.nb-comment-deleted .nb-comment-name {
+  font-weight: 400;
+  font-style: italic;
+  color: #90949c;
+}
