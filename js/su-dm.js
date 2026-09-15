@@ -9,9 +9,9 @@
 //   答對③身分 → 蘇一次講完最後六句（每句間隔2秒）→ 封鎖
 
 const SU2_ANSWERS = {
-  1: "7380YB",
-  2: "陳文昌",
-  3: "警政署署長"
+  1: ["7380YB"],
+  2: ["陳文昌"],
+  3: ["警政署署長", "署長"]
 };
 
 const SU2_OPENING = [
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (stage >= 1 && stage <= 3) {
       const qNum = stage;
-      if (su2Normalize(text) === SU2_ANSWERS[qNum]) {
+      if (SU2_ANSWERS[qNum].includes(su2Normalize(text))) {
         if (qNum < 3) {
           stage = qNum + 1;
           localStorage.setItem("su2_stage", String(stage));
