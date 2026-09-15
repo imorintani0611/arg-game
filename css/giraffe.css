@@ -1,0 +1,260 @@
+/* ===== 短頸鹿綜合短期補習班：補習班網站風格 ===== */
+.gr-body {
+  margin: 0;
+  background: #f7f9fc;
+  color: #2b2b2b;
+  font-family: -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.7;
+}
+
+.gr-topbar {
+  background: #145da0;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  padding: 4px;
+}
+
+.gr-header {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 3px solid #f5a623;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.gr-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gr-logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.gr-brand {
+  font-size: 17px;
+  font-weight: 800;
+  color: #145da0;
+}
+
+.gr-brand-sub {
+  font-size: 11px;
+  color: #888;
+  display: block;
+}
+
+.gr-nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.gr-nav a {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 2px;
+}
+
+.gr-nav a:hover, .gr-nav a.active {
+  color: #f5a623;
+  border-bottom: 2px solid #f5a623;
+}
+
+.gr-hero {
+  position: relative;
+}
+
+.gr-hero-img {
+  width: 100%;
+  display: block;
+  max-height: 340px;
+  object-fit: cover;
+}
+
+.gr-hero-text {
+  text-align: center;
+  padding: 20px 16px;
+  background: linear-gradient(180deg, #fff8ec, #fff);
+}
+
+.gr-hero-text h1 {
+  color: #145da0;
+  font-size: 24px;
+  margin: 0 0 8px;
+}
+
+.gr-hero-text p {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+.gr-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.gr-section h2 {
+  color: #145da0;
+  font-size: 19px;
+  border-left: 5px solid #f5a623;
+  padding-left: 10px;
+  margin-bottom: 14px;
+}
+
+.gr-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+}
+
+.gr-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.gr-card-icon {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.gr-card h3 {
+  font-size: 14px;
+  margin: 4px 0;
+  color: #145da0;
+}
+
+.gr-card p {
+  font-size: 12px;
+  color: #777;
+  margin: 0;
+}
+
+.gr-news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gr-news-list li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.gr-news-date {
+  color: #999;
+  font-size: 12px;
+  flex-shrink: 0;
+  width: 78px;
+}
+
+.gr-news-list a {
+  color: #145da0;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.gr-news-list a:hover {
+  text-decoration: underline;
+}
+
+.gr-news-plain {
+  color: #444;
+}
+
+.gr-article-title {
+  color: #145da0;
+  font-size: 21px;
+  margin-bottom: 4px;
+}
+
+.gr-article-meta {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 16px;
+}
+
+.gr-article-img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+  margin: 10px 0;
+}
+
+.gr-article-caption {
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+  margin: -4px 0 16px;
+}
+
+.gr-comment-block {
+  margin-top: 28px;
+  border-top: 2px dashed #ddd;
+  padding-top: 16px;
+}
+
+.gr-comment-plugin-label {
+  font-size: 11px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.gr-comment {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.gr-comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #cfd8e3;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #555;
+}
+
+.gr-comment-body {
+  background: #f0f2f5;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.gr-comment-name {
+  font-weight: 700;
+  font-size: 12px;
+  display: block;
+}
+
+.gr-footer {
+  background: #145da0;
+  color: #dce8f5;
+  text-align: center;
+  font-size: 12px;
+  padding: 20px 16px;
+  margin-top: 20px;
+}

@@ -264,3 +264,27 @@ SEARCH_DB["糖果派對"] = [
     link: "decoy-candyparty.html"
   }
 ];
+
+// Nosebook留言裡提到的Jerry，搜這個會找到補習班網站的得獎頁面
+["Jerry", "jerry", "JERRY"].forEach(k => {
+  SEARCH_DB[k] = [
+    {
+      url: "短頸鹿綜合短期補習班 › 最新消息",
+      title: "本班學生榮獲臺北市中等學校英語演講比賽特優！",
+      date: "2024/11/02",
+      snippet: "恭喜本班英語演講培訓班學生陳威豪同學（英文名 Jerry），在本屆比賽中一舉奪下特優佳績……",
+      link: "giraffe-award-speech.html"
+    }
+  ];
+});
+
+// 從Nosebook封面照片標記名單查到的名字，證實他當年真的是署長
+SEARCH_DB["陳文昌"] = [
+  {
+    url: "中央通訊社 · 政治",
+    title: "警政署新舊任署長交接典禮 陳文昌卸任 沈國樑接棒",
+    date: "2018年5月14日",
+    snippet: "警政署今（14）日上午舉行新舊任署長交接典禮，歷經六年任期的署長陳文昌正式卸任，由原副署長沈國樑接任……",
+    link: "news-succession.html"
+  }
+];
