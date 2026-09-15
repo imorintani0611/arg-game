@@ -253,3 +253,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 });
+
+// 「糖果派對」其實只是個手遊廣告，誤導玩家以為跟八卦裡的都市傳說有關
+SEARCH_DB["糖果派對"] = [
+  {
+    url: "應用程式商店 › 遊戲",
+    title: "糖果派對 Candy Party - 消除煩惱，甜蜜連連！",
+    date: "熱門遊戲 · 4.8星",
+    snippet: "全台超過500萬人下載的療癒消除遊戲，每天消除煩惱、甜蜜連連……",
+    link: "decoy-candyparty.html"
+  }
+];
