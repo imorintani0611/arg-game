@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NPA-SEC | 通訊紀錄</title>
-<link rel="stylesheet" href="css/npa.css?v=31">
+<title>NPA-SEC | 首頁</title>
+<link rel="stylesheet" href="css/npa.css?v=32">
 </head>
 <body class="npa-body">
 
@@ -21,14 +21,22 @@
 <main class="npa-main">
 
   <div class="npa-account-bar">
-    <span>識別證號 0281 · 沈國樑</span>
+    <span>識別證號 3302 · 沈國樑</span>
     <a href="npa-login.html" id="npaLogout">登出</a>
   </div>
 
-  <h1 class="npa-inbox-title">通訊紀錄</h1>
-  <p class="npa-inbox-count">顯示最近 15 筆 · 共 1,247 筆</p>
+  <div class="npa-tabs">
+    <button class="npa-tab active" id="npaTabMsgBtn">① 私密即時通訊</button>
+    <button class="npa-tab" id="npaTabFileBtn">② 機密檔案留存</button>
+  </div>
 
-  <div id="npaMailList"></div>
+  <section class="npa-tab-panel active" id="npaTabMsg">
+    <div id="npaContactList"></div>
+  </section>
+
+  <section class="npa-tab-panel" id="npaTabFile">
+    <div id="npaCaseList"></div>
+  </section>
 
 </main>
 
@@ -37,6 +45,6 @@
   存取紀錄將永久留存
 </footer>
 
-<script src="js/npa.js?v=31"></script>
+<script src="js/npa.js?v=32"></script>
 </body>
 </html>
