@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     yesBtn.addEventListener("click", () => {
-      window.location.href = "ending.html";
+      window.location.href = "shutdown.html";
     });
   }
 });

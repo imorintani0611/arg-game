@@ -36,7 +36,7 @@
   </article>
 
   <div style="text-align:center; margin-top:32px; padding-top:20px; border-top:1px solid #ddd;">
-    <button id="closeComputerBtn" style="background:#2a2a2a; color:#eee; border:none; padding:12px 32px; font-size:14px; cursor:pointer; border-radius:4px;">🖥️ 關閉電腦</button>
+    <button id="closeComputerBtn" style="background:#2a2a2a; color:#eee; border:none; padding:12px 32px; font-size:14px; cursor:pointer; border-radius:4px;">關閉</button>
   </div>
 
 </main>
@@ -46,6 +46,8 @@
     const outcome = localStorage.getItem("liu_reply_outcome");
     if (outcome === "1A") {
       window.location.href = "ending-transferred.html";
+    } else if (outcome === "1B") {
+      window.location.href = "ending.html";
     } else {
       window.location.href = "ending-withdraw.html";
     }

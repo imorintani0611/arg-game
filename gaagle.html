@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaagle</title>
+<style>
+  body {
+    margin: 0;
+    background: #fff;
+    color: #202124;
+    font-family: Arial, "Noto Sans TC", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 90px;
+  }
+  .gaagle-logo {
+    font-size: 44px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+  .gaagle-logo span:nth-child(1) { color: #4285F4; }
+  .gaagle-logo span:nth-child(2) { color: #EA4335; }
+  .gaagle-logo span:nth-child(3) { color: #FBBC05; }
+  .gaagle-logo span:nth-child(4) { color: #4285F4; }
+  .gaagle-logo span:nth-child(5) { color: #34A853; }
+  .gaagle-logo span:nth-child(6) { color: #EA4335; }
+  .gaagle-search-row {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 480px;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    padding: 10px 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  .gaagle-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: #202124;
+  }
+  .gaagle-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .gaagle-unverified {
+    font-size: 11px;
+    color: #b3261e;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+  .gaagle-results {
+    display: none;
+    width: 90%;
+    max-width: 480px;
+    margin-top: 32px;
+  }
+  .gaagle-result-item {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .gaagle-result-url {
+    font-size: 12px;
+    color: #202124;
+  }
+  .gaagle-result-title {
+    font-size: 17px;
+    color: #1a0dab;
+    margin: 2px 0;
+  }
+  .gaagle-result-snippet {
+    font-size: 13px;
+    color: #4d5156;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="gaagle-logo"><span>G</span><span>a</span><span>a</span><span>g</span><span>l</span><span>e</span></div>
+
+<div class="gaagle-search-row">
+  <input type="text" id="gaagleInput" class="gaagle-input" value="劉育豪">
+  <button id="gaagleSearchBtn" class="gaagle-btn" aria-label="搜尋">🔍</button>
+</div>
+<p class="gaagle-unverified">⚠ 未經審核之搜尋平台，搜尋結果可能包含不實內容</p>
+
+<div class="gaagle-results" id="gaagleResults">
+  <a href="news-liu-daughter.html" class="gaagle-result-item">
+    <p class="gaagle-result-url">地方新聞網 › 社會版</p>
+    <p class="gaagle-result-title">分局長獨生女不幸墜樓 警方初步排除他殺</p>
+    <p class="gaagle-result-snippet">臺北市中山分局分局長劉育豪之女，日前於住家陽台不慎墜樓，送醫後宣告不治，警方初步排除他殺可能……</p>
+  </a>
+</div>
+
+<script>
+  document.getElementById("gaagleSearchBtn").addEventListener("click", () => {
+    document.getElementById("gaagleResults").style.display = "block";
+  });
+</script>
+
+</body>
+</html>

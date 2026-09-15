@@ -46,11 +46,23 @@ function liuSubmit(sentenceNum, inputId, resultId) {
       localStorage.setItem("daughter_news_available", "true");
     }
   }
+
+  if (outcome !== "1B") {
+    const shutdownSection = document.getElementById("shutdownSection");
+    if (shutdownSection) shutdownSection.style.display = "";
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const btn1 = document.getElementById("liuBtn1");
   if (!btn1) return;
+
+  const shutdownBtn = document.getElementById("shutdownBtn");
+  if (shutdownBtn) {
+    shutdownBtn.addEventListener("click", () => {
+      window.location.href = "shutdown.html";
+    });
+  }
 
   // 如果已經選過，畫面回來要恢復鎖定狀態並顯示原本的結果
   const savedOutcome = localStorage.getItem("liu_reply_outcome");
@@ -65,6 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       result.textContent = "已送出，對方已讀。";
       result.className = "reply-status success";
+    }
+    if (savedOutcome !== "1B") {
+      const shutdownSection = document.getElementById("shutdownSection");
+      if (shutdownSection) shutdownSection.style.display = "";
     }
     return;
   }
