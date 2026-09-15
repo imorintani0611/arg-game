@@ -57,6 +57,9 @@ function getManagerMailIds() {
   if (localStorage.getItem("viewed_wonka_chat") === "true") {
     ids.push("mmail6");
   }
+  if (localStorage.getItem("manager_report_correct") === "true") {
+    ids.push("mmail7");
+  }
   return ids;
 }
 
@@ -142,6 +145,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const mmail6Item = document.getElementById("mmail6Item");
   if (mmail6Item) {
     mmail6Item.style.display = localStorage.getItem("viewed_wonka_chat") === "true" ? "" : "none";
+  }
+
+  // mmail7（第二次駁回）要等玩家補充陳情且答對地點才會出現
+  const mmail7Item = document.getElementById("mmail7Item");
+  if (mmail7Item) {
+    mmail7Item.style.display = localStorage.getItem("manager_report_correct") === "true" ? "" : "none";
   }
 
   // 取得主管權限跟顯示的身分是兩件事：

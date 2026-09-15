@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>刑案管理系統 CMS-7 | 郵件</title>
+<link rel="stylesheet" href="css/style.css?v=31">
+</head>
+<body data-mail-id="mmail7">
+
+<div class="scanline"></div>
+
+<header class="sys-header">
+  <a href="index.html" class="sys-header-left">
+    <span class="sys-badge">CMS-7</span>
+    <span class="sys-title">內部信箱</span>
+  </a>
+  <nav class="sys-nav">
+    <a href="personnel.html" class="nav-icon" aria-label="人員查詢">🪪</a>
+    <a href="evidence.html" class="nav-icon" aria-label="證據系統">📁</a>
+    <a href="inbox.html" class="nav-icon mail-entry active" aria-label="信箱">
+      <span class="mail-icon">✉</span>
+      <span class="mail-badge">1</span>
+    </a>
+  </nav>
+</header>
+
+<main class="doc-page">
+
+  <div class="mail-detail-meta">
+    <span class="mail-detail-from">法務部廉政署 陳情受理科</span>
+    <span class="mail-detail-time">113年11月21日</span>
+  </div>
+
+  <h1 class="doc-title mail-detail-subject">Re：Re：Re：陳情案調查結果通知（案號113廉查字第10847-1號）</h1>
+
+  <div class="letter">
+    <p>劉先生 台端 鈞鑒：</p>
+    <p>
+      台端於本（113）年11月間再次以原案號（113廉查字第10847號）名義提出補充陳情，
+      指稱貴機關現任署長涉有重大不法情事，並檢附相關通訊紀錄及檔案畫面為佐證。
+    </p>
+    <p>
+      經查，台端所檢附之資料來源尚無法查證其合法取得途徑，
+      且部分內容疑涉未依法定程序取得之通訊紀錄，核與本署受理陳情案件之
+      程序要件未合，依規定不予受理。
+    </p>
+    <p>
+      台端如認為前述資料涉及具體不法情事，應循司法偵查程序另行提出，
+      非屬本署得逕行採認之範疇。另本案相關帳號使用情形，將一併轉請
+      權責機關查核。
+    </p>
+    <p style="margin-top:24px;">耑此　敬頌</p>
+    <p>時祺</p>
+    <p style="margin-top:24px;">
+      法務部廉政署 綜合查處組<br>
+      陳情受理科　敬啟<br>
+      中華民國113年11月21日
+    </p>
+  </div>
+
+  <section class="action-block">
+    <button id="npaSuspendCloseBtn" class="btn-secondary" style="width:100%; cursor:pointer;">關閉</button>
+  </section>
+
+</main>
+
+<footer class="sys-footer">
+  <span>本系統僅供內部使用 · 存取紀錄將被留存</span>
+</footer>
+
+<div id="npaSuspendOverlay" style="display:none; position:fixed; inset:0; background:rgba(20,18,14,0.88); z-index:999; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--paper); border:1px solid var(--line); max-width:340px; width:100%; padding:24px 20px; text-align:center;">
+    <p style="font-size:15px; font-weight:700; margin:0 0 12px;">系統通知</p>
+    <p style="font-size:14px; line-height:1.8; margin:0 0 24px;">
+      您的帳號偵測出不明活動，已被暫時停用。
+    </p>
+    <button id="npaSuspendYesBtn" class="btn-primary" style="width:100%; cursor:pointer;">是</button>
+  </div>
+</div>
+
+<script src="js/site.js?v=33"></script>
+<script src="js/manager-report.js?v=33"></script>
+</body>
+</html>

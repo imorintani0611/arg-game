@@ -61,6 +61,42 @@
     </p>
   </div>
 
+  <section class="report-section" style="margin-top:32px; border-top:2px dashed var(--line); padding-top:20px;">
+    <h2>補充陳情</h2>
+    <p class="letter" style="margin-bottom:16px;">
+      茲檢舉警政署現任署長沈國樑，長期與身分不明之外部人士進行非法金錢往來，
+      並涉嫌利用不明場所從事非法聚會活動，且對轄下多起刑事案件涉有隱匿犯罪情事、
+      濫用職權妨礙偵辦之嫌。檢舉人已取得該署長與上述外部人士之通訊往來紀錄
+      及相關案件檔案，足資佐證上情。
+    </p>
+    <p class="letter" style="margin-bottom:16px;">
+      另查悉該不明人士明日將於下列地點舉行聚會，涉及重大不法情事，
+      懇請鈞署即刻派員查證：
+    </p>
+    <p style="margin-bottom:16px;">
+      聚會地點：
+      <input type="text" id="reportLocationInput" class="reply-input" style="display:inline-block; width:220px;" autocomplete="off" placeholder="請輸入地點">
+    </p>
+    <p class="letter" style="margin-bottom:12px;">
+      檢舉人已將相關對話截圖及檔案紀錄一併檢附如后，敬請鈞署詳查，
+      並儘速採取行動，以免相關事證遭湮滅。
+    </p>
+
+    <ul class="attachment-list" style="margin-bottom:16px;">
+      <li class="attachment ok">
+        <span class="att-icon">🖼️</span>
+        <span class="att-name">截圖_機密通訊系統.png</span>
+      </li>
+      <li class="attachment ok">
+        <span class="att-icon">🖼️</span>
+        <span class="att-name">截圖_機密檔案留存.png</span>
+      </li>
+    </ul>
+
+    <button id="reportSubmitBtn" class="btn-primary" style="width:100%">送出陳情</button>
+    <p id="reportResult" class="reply-status"></p>
+  </section>
+
   <section class="action-block">
     <a href="inbox.html" class="btn-secondary">返回信箱</a>
   </section>
@@ -71,6 +107,7 @@
   <span>本系統僅供內部使用 · 存取紀錄將被留存</span>
 </footer>
 
-<script src="js/site.js?v=31"></script>
+<script src="js/site.js?v=33"></script>
+<script src="js/manager-report.js?v=33"></script>
 </body>
 </html>
