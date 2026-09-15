@@ -126,6 +126,13 @@ const CASE_DB = {
       { name: "核定函", locked: true, unlockedDetail: "依警察人員人事條例辦理，自103年7月1日起生效。" }
     ]
   },
+  "TR14052018": {
+    access: true,
+    title: "人事異動令 · 陳文昌／沈國樑",
+    items: [
+      { name: "人事異動令", link: "chen-shen-transfer-order.html" }
+    ]
+  },
   "TR04092020": {
     access: true,
     title: "人事異動令 · 劉育豪",

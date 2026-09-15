@@ -1,27 +1,59 @@
-// ===== 與蘇女士的私訊 =====
-// 階段0：空白，玩家先傳一則訊息（內容不限）
-// 階段1：蘇回問「你知道那天他撞的是誰嗎？」，玩家要答對死者名字
-// 階段2：蘇寄來長信，給帳號與密碼線索
+// ===== 蘇的三題驗證（取代舊版單題劇情）=====
+// 前提：liu_reply_outcome === "1B"（已收到mail11） 且 manager_access === "true"（長官層級）
+// 沒達成前提，不管玩家傳什麼，蘇完全不會回應——訊息會送出，但永遠已讀不回。
+//
+// 流程：
+//   玩家傳第一則訊息 → 蘇開場白（提到Henry，玩家才知道要去搜Henry找Nosebook）→ 問題①車牌
+//   答對①車牌 → 問題②同車的人是誰（陳文昌）
+//   答對②姓名 → 問題③他當時的身分（警政署署長）
+//   答對③身分 → 蘇一次講完最後六句（每句間隔2秒）→ 封鎖
 
-const SU_VICTIM_NAME = "張哲瑋";
+const SU2_ANSWERS = {
+  1: "7380YB",
+  2: "陳文昌",
+  3: "警政署署長"
+};
 
-const SU_LONG_REPLY = [
-  "……你真的查到了。",
-  "我不知道你是誰，也不想知道。但如果你連這個都查得到，那你大概已經知道他是什麼樣的人了。",
-  "我跟他離婚八年了。我原本以為他本性並不壞，只是被一件事綁住了。但……我現在也不知道了。",
-  "那個人我見過一次。在我們家客廳。他很客氣，笑得很溫和，穿得很好。他走了以後，我先生整整兩天沒有說話。",
-  "之後他常常跟那個人出去。有時候是船上，有時候是飛機，從來不說要去哪裡。回來以後總是很久不碰我們的女兒。",
-  "有一次半夜我聽到他講電話。講的都是糖果、蛋糕、烘焙、平底鍋這些東西。他不是會下廚的人。我聽了十分鐘就知道那些不是在講甜點。",
-  "我沒有證據，我什麼都沒有。我只能做這件事。每年那一天，我捐一筆錢，寫一句對不起。我知道那不算什麼。",
-  "如果你真的要往下查，這兩樣東西給你。",
-  "他的署級系統識別證號是 0281。",
-  "他的密碼從來沒有改過。從2014年開始就是那個孩子的名字。他自己設的。",
-  "我不會再回你的訊息了。請不要再來找我。"
+const SU2_OPENING = [
+  "你也是來問Henry的事嗎？",
+  "我已經跟很多記者談過了，最後誰也不敢把這些事情寫成報導。",
+  "你能找到這裡也是夠執著了，你能夠答對我的問題我就把我知道的都告訴你。"
 ];
 
-function dmNow() {
-  const d = new Date();
-  return `${d.getHours().toString().padStart(2,"0")}:${d.getMinutes().toString().padStart(2,"0")}`;
+const SU2_QUESTIONS = {
+  1: "他那天開的車，車牌號碼是多少？",
+  2: "那天晚上，跟他同車的人是誰？",
+  3: "你知道他當時是什麼身分嗎？"
+};
+
+const SU2_REACTIONS = {
+  1: "……你是怎麼找到的？好吧。",
+  2: "……你連這個都查到了。"
+};
+
+const SU2_WRONG = {
+  1: "不是。",
+  2: "……你猜的？",
+  3: "不對，你什麼都還沒查到。"
+};
+
+// 答對第三題後，一次講完，每句間隔2秒，最後封鎖
+const SU2_FINAL = [
+  "我沒什麼好說的，我曾經以為這個人的根本是善良的，但現在的我也不知道了。",
+  "回過頭來無話不談的另一半卻成了只剩下秘密的陌生人。",
+  "你一定不懂吧。",
+  "他總是用那一天當作他的密碼，說是他的污點。",
+  "如果你有需要的話就拿去試試看吧。",
+  "不要再找我了。"
+];
+
+function su2Unlocked() {
+  return localStorage.getItem("liu_reply_outcome") === "1B" &&
+         localStorage.getItem("manager_access") === "true";
+}
+
+function su2Normalize(text) {
+  return text.trim();
 }
 
 function dmAddBubble(thread, cls, html) {
@@ -43,29 +75,57 @@ function dmScrollBottom() {
   window.scrollTo(0, document.body.scrollHeight);
 }
 
+function dmTyping(thread) {
+  const typing = document.createElement("div");
+  typing.className = "dm-typing";
+  typing.textContent = "對方正在輸入…";
+  thread.appendChild(typing);
+  dmScrollBottom();
+  return typing;
+}
+
+// 依序把多行訊息以固定間隔顯示出來，全部顯示完後寫入history並執行callback
+function dmSequence(thread, history, lines, interval, callback) {
+  let i = 0;
+  const typing = dmTyping(thread);
+  const step = () => {
+    if (i === 0) typing.remove();
+    if (i < lines.length) {
+      dmAddBubble(thread, "them", `<p>${lines[i]}</p>`);
+      dmScrollBottom();
+      i++;
+      setTimeout(step, interval);
+    } else {
+      lines.forEach(l => {
+        history.push({ who: "them", html: `<p>${l}</p>` });
+      });
+      localStorage.setItem("su2_history", JSON.stringify(history));
+      if (callback) callback();
+    }
+  };
+  setTimeout(step, interval);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const thread = document.getElementById("dmThread");
   const input = document.getElementById("dmInput");
   const sendBtn = document.getElementById("dmSend");
+  if (!thread || !input || !sendBtn) return;
 
-  let stage = parseInt(localStorage.getItem("su_dm_stage") || "0", 10);
-  const firstMsg = localStorage.getItem("su_dm_first") || "";
-  const answerMsg = localStorage.getItem("su_dm_answer") || "";
+  let stage = parseInt(localStorage.getItem("su2_stage") || "0", 10);
+  let history = JSON.parse(localStorage.getItem("su2_history") || "[]");
 
-  // 重建對話紀錄
   function render() {
     thread.innerHTML = "";
-    if (stage >= 1) {
+    if (history.length > 0) {
       dmAddTime(thread, "今天");
-      dmAddBubble(thread, "me", firstMsg);
-      dmAddBubble(thread, "them", "<p>你是誰？</p><p>你知道那天他撞的是誰嗎？</p>");
+      history.forEach(entry => dmAddBubble(thread, entry.who, entry.html));
     }
-    if (stage >= 2) {
-      dmAddBubble(thread, "me", answerMsg);
-      SU_LONG_REPLY.forEach(line => dmAddBubble(thread, "them", `<p>${line}</p>`));
+    if (stage >= 4) {
       input.disabled = true;
       sendBtn.disabled = true;
-      input.placeholder = "對方已關閉私訊";
+      input.placeholder = "已被對方封鎖";
+      dmAddTime(thread, "已被對方封鎖");
     }
     dmScrollBottom();
   }
@@ -75,65 +135,52 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleSend() {
     const text = input.value.trim();
     if (!text) return;
+    input.value = "";
+
+    history.push({ who: "me", html: text });
+    localStorage.setItem("su2_history", JSON.stringify(history));
+    dmAddBubble(thread, "me", text);
+    dmScrollBottom();
+
+    // 前提未達成：訊息照樣送出，但蘇完全不會回應
+    if (!su2Unlocked()) return;
 
     if (stage === 0) {
-      localStorage.setItem("su_dm_first", text);
-      localStorage.setItem("su_dm_stage", "1");
       stage = 1;
-      input.value = "";
-      dmAddTime(thread, "今天");
-      dmAddBubble(thread, "me", text);
-      const typing = document.createElement("div");
-      typing.className = "dm-typing";
-      typing.textContent = "對方正在輸入…";
-      thread.appendChild(typing);
-      dmScrollBottom();
-      setTimeout(() => {
-        typing.remove();
-        dmAddBubble(thread, "them", "<p>你是誰？</p><p>你知道那天他撞的是誰嗎？</p>");
-        dmScrollBottom();
-      }, 1400);
+      localStorage.setItem("su2_stage", "1");
+      dmSequence(thread, history, [...SU2_OPENING, SU2_QUESTIONS[1]], 2000);
       return;
     }
 
-    if (stage === 1) {
-      input.value = "";
-      dmAddBubble(thread, "me", text);
-      dmScrollBottom();
-      if (text === SU_VICTIM_NAME) {
-        localStorage.setItem("su_dm_answer", text);
-        localStorage.setItem("su_dm_stage", "2");
-        localStorage.setItem("su_dm_done", "true");
-        stage = 2;
-        const typing = document.createElement("div");
-        typing.className = "dm-typing";
-        typing.textContent = "對方正在輸入…";
-        thread.appendChild(typing);
-        dmScrollBottom();
-        let i = 0;
-        const step = () => {
-          if (i === 0) typing.remove();
-          if (i < SU_LONG_REPLY.length) {
-            dmAddBubble(thread, "them", `<p>${SU_LONG_REPLY[i]}</p>`);
-            dmScrollBottom();
-            i++;
-            setTimeout(step, 900);
-          } else {
+    if (stage >= 1 && stage <= 3) {
+      const qNum = stage;
+      if (su2Normalize(text) === SU2_ANSWERS[qNum]) {
+        if (qNum < 3) {
+          stage = qNum + 1;
+          localStorage.setItem("su2_stage", String(stage));
+          dmSequence(thread, history, [SU2_REACTIONS[qNum], SU2_QUESTIONS[qNum + 1]], 2000);
+        } else {
+          stage = 4;
+          localStorage.setItem("su2_stage", "4");
+          dmSequence(thread, history, SU2_FINAL, 2000, () => {
             input.disabled = true;
             sendBtn.disabled = true;
-            input.placeholder = "對方已關閉私訊";
-          }
-        };
-        setTimeout(step, 1800);
+            input.placeholder = "已被對方封鎖";
+            dmAddTime(thread, "已被對方封鎖");
+            dmScrollBottom();
+          });
+        }
       } else {
-        // 答錯：已讀不回
-        const t = document.createElement("div");
-        t.className = "dm-time";
-        t.textContent = "已讀";
-        thread.appendChild(t);
-        dmScrollBottom();
+        const typing = dmTyping(thread);
+        setTimeout(() => {
+          typing.remove();
+          const wrongLine = SU2_WRONG[qNum];
+          dmAddBubble(thread, "them", `<p>${wrongLine}</p>`);
+          history.push({ who: "them", html: `<p>${wrongLine}</p>` });
+          localStorage.setItem("su2_history", JSON.stringify(history));
+          dmScrollBottom();
+        }, 1200);
       }
-      return;
     }
   }
 

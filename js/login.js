@@ -15,6 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loginBtn.addEventListener("click", () => {
     const account = accountInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    // 沈國樑的CMS7帳號已停用，密碼對了也一樣，直接導去署級系統
+    if (account === "3302" && password === "18062014") {
+      msg.textContent = "您的CMS7系統已停用，請登錄署級系統。";
+      return;
+    }
+
     if (account === "9021" || account === "7734") {
       localStorage.setItem("current_account", account);
       window.location.href = "index.html";
