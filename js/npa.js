@@ -36,6 +36,52 @@ const WONKA_CHAT = [
   { from: "wonka", date: "今天", text: ["烤箱在中山北路七段45號，明天同樣時間。"] }
 ];
 
+// ===== 與劉育豪的聊天記錄 =====
+// 他是現任「料理人」，語氣刻意寫得公事公辦、冷靜——跟mail9/mail10裡的掙扎判若兩人
+const LIU_CHAT = [
+  { from: "shen", date: "2020/09/04", text: ["以後永豐那邊的狀況，你直接跟我報告，不用走正式流程。"] },
+  { from: "liu",  date: "2020/09/04", text: ["是，署長。"] },
+  { from: "shen", date: "2020/09/10", text: ["平底鍋那邊定期去看一下，有問題馬上跟我說。"] },
+  { from: "liu",  date: "2020/09/10", text: ["了解。"] },
+  { from: "liu",  date: "2020/11/15", text: ["上個月的貨已經照時間送到了。"] },
+  { from: "shen", date: "2020/11/15", text: ["很好，這才是我看重你的原因。"] },
+  { from: "shen", date: "2022/06/20", text: ["最近工廠那邊還好嗎？"] },
+  { from: "liu",  date: "2022/06/20", text: ["都在控制範圍內。"] },
+  { from: "liu",  date: "2023/10/08", text: ["署長，最近……我開始覺得有點不對勁。"] },
+  { from: "shen", date: "2023/10/08", text: ["不對勁？你想清楚你現在的位置是怎麼來的。"] },
+  { from: "liu",  date: "2023/10/08", text: ["是，我知道了。"] }
+];
+
+// ===== 與羅美玉的聊天記錄 =====
+// 她是上一任「料理人」，語氣疲憊、認命，知道真相但選擇不再多說
+const LUO_CHAT = [
+  { from: "shen", date: "2019/10/15", text: ["妳那邊安頓得如何？"] },
+  { from: "luo",  date: "2019/10/15", text: ["都上軌道了。"] },
+  { from: "shen", date: "2020/01/20", text: ["妳那邊的貨源穩定嗎？"] },
+  { from: "luo",  date: "2020/01/20", text: ["穩定。老樣子，不會有問題。"] },
+  { from: "luo",  date: "2020/09/06", text: ["劉育豪那孩子，你們選他？"] },
+  { from: "shen", date: "2020/09/06", text: ["怎麼，妳不放心？"] },
+  { from: "luo",  date: "2020/09/06", text: ["沒事。他會適應的，大家都一樣。"] }
+];
+
+// ===== 與陳文昌的聊天記錄 =====
+// 全部落在2018/5/14卸任之前，語氣溫暖——他是「已經結束的過去式」
+const CHEN_CHAT = [
+  { from: "chen", date: "2016/03/02", text: ["最近還好嗎？聽說你們家的事，別太往心裡去。"] },
+  { from: "shen", date: "2016/03/02", text: ["謝謝署長關心。"] },
+  { from: "chen", date: "2016/03/02", text: ["別叫我署長，私底下叫我一聲大哥就好。"] },
+  { from: "chen", date: "2017/08/19", text: ["上面那些人的事，你不用什麼都往心裡去，做好你該做的事就好。"] },
+  { from: "shen", date: "2017/08/19", text: ["是。"] }
+];
+
+// ===== 聯絡人清單設定 =====
+const NPA_CONTACTS = [
+  { id: "wonka", name: "旺卡",   avatarText: "?", page: "npa-chat-wonka.html", chat: WONKA_CHAT, subordinate: false, wonkaStyle: true },
+  { id: "liu",   name: "劉育豪", avatarText: "劉", page: "npa-chat-liu.html",   chat: LIU_CHAT,   subordinate: true },
+  { id: "luo",   name: "羅美玉", avatarText: "羅", page: "npa-chat-luo.html",   chat: LUO_CHAT,   subordinate: true },
+  { id: "chen",  name: "陳文昌", avatarText: "陳", page: "npa-chat-chen.html",  chat: CHEN_CHAT,  subordinate: false }
+];
+
 // ===== 機密檔案留存：最近三個案件 =====
 // 案件代碼在一般案件搜尋系統查不到（已從正式紀錄中刪除），這裡是唯一留存的痕跡。
 const NPA_CASES = [
@@ -72,8 +118,8 @@ const NPA_CASES = [
   }
 ];
 
-function npaFromLabel(from) {
-  return from === "wonka" ? "旺卡" : "沈國樑";
+function npaIsMe(from) {
+  return from === "shen";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -118,19 +164,21 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // 聯絡人清單：目前只有旺卡，其餘之後再加
-    const lastMsg = WONKA_CHAT[WONKA_CHAT.length - 1];
-    const lastPreview = lastMsg.recalled ? "對方已收回訊息" : lastMsg.text[0];
-    contactList.innerHTML = `
-      <a href="npa-chat-wonka.html" class="npa-contact wonka">
-        <div class="npa-contact-avatar">?</div>
-        <div class="npa-contact-body">
-          <div class="npa-contact-name">旺卡</div>
-          <div class="npa-contact-preview">${lastPreview}</div>
-        </div>
-      </a>
-      <p class="npa-contact-note">僅顯示近期有往來紀錄的聯絡人。</p>
-    `;
+    // 聯絡人清單
+    contactList.innerHTML = NPA_CONTACTS.map(c => {
+      const lastMsg = c.chat[c.chat.length - 1];
+      const lastPreview = lastMsg.recalled ? "對方已收回訊息" : lastMsg.text[0];
+      const wonkaClass = c.wonkaStyle ? " wonka" : "";
+      return `
+        <a href="${c.page}" class="npa-contact${wonkaClass}">
+          <div class="npa-contact-avatar">${c.avatarText}</div>
+          <div class="npa-contact-body">
+            <div class="npa-contact-name">${c.name}</div>
+            <div class="npa-contact-preview">${lastPreview}</div>
+          </div>
+        </a>
+      `;
+    }).join("") + `<p class="npa-contact-note">僅顯示近期有往來紀錄的聯絡人。</p>`;
 
     // 檔案清單
     const caseList = document.getElementById("npaCaseList");
@@ -169,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // ===== 旺卡聊天頁 =====
+  // ===== 聊天頁（旺卡／劉育豪／羅美玉／陳文昌 共用） =====
   const thread = document.getElementById("npaChatThread");
   if (thread) {
     if (localStorage.getItem("npa_logged_in") !== "true") {
@@ -177,29 +225,34 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const contactId = document.body.dataset.contact;
+    const contact = NPA_CONTACTS.find(c => c.id === contactId);
+    if (!contact) return;
+
     let lastDate = "";
-    thread.innerHTML = WONKA_CHAT.map(m => {
+    thread.innerHTML = contact.chat.map(m => {
       let dateHtml = "";
       if (m.date !== lastDate) {
         dateHtml = `<div class="npa-chat-date">${m.date}</div>`;
         lastDate = m.date;
       }
+      const rowClass = npaIsMe(m.from) ? "me" : "them";
       if (m.recalled) {
         return dateHtml + `
-          <div class="npa-chat-row ${m.from}">
+          <div class="npa-chat-row ${rowClass}">
             <div class="npa-chat-bubble npa-chat-recalled">對方已收回訊息</div>
           </div>
         `;
       }
       const bubbles = m.text.map(t => `
-        <div class="npa-chat-row ${m.from}">
+        <div class="npa-chat-row ${rowClass}">
           <div class="npa-chat-bubble">${t}</div>
         </div>
       `).join("");
       return dateHtml + bubbles;
     }).join("");
 
-    localStorage.setItem("viewed_wonka_chat", "true");
+    localStorage.setItem("viewed_" + contactId + "_chat", "true");
     window.scrollTo(0, document.body.scrollHeight);
   }
 });

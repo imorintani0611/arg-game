@@ -64,9 +64,9 @@ const SEARCH_DB = {
     },
     {
       url: "地方新聞網 › 社會版",
-      title: "分局長獨生女不幸墜樓 警方初步排除他殺",
+      title: "分局長獨生女失蹤 警方籲請民眾協尋",
       date: "最近",
-      snippet: "臺北市中山分局分局長劉育豪之女，日前於住家陽台不慎墜樓，送醫後宣告不治，警方初步排除他殺可能……",
+      snippet: "臺北市中山分局分局長劉育豪之女，於住家附近失蹤，警方已擴大搜索，呼籲知情民眾提供線索……",
       link: "news-liu-daughter.html",
       requiresDaughterNews: true
     }
